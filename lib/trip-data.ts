@@ -58,10 +58,10 @@ export const tripDays: TripDay[] = [
   {
     day: 1,
     date: "7/2 목",
-    title: "도착 → 도톤보리 첫날 밤",
-    mood: "간사이 도착 → 미나미 베이스캠프 → 첫 밤은 도톤보리 강변에서",
+    title: "오후 도착 → 도톤보리 첫날 밤",
+    mood: "13시 간사이 도착 → 혼마치 그랑벨 체크인 → 저녁부터 미나미",
     summary:
-      "간사이공항 도착 → 라피트로 난바 → 호텔 짐 맡기기 → 미즈노 오코노미야키 → 구로몬 시장 주전부리 → 신사이바시·아메무라 산책 → 우라난바 이자카야 저녁 → 글리코 사인 앞 커플 사진 → 도톤보리 관람차 → 칵테일 한 잔.",
+      "MM736으로 간사이공항 T2 도착(13:15) → 셔틀+라피트로 난바 → 그랑벨 호텔(혼마치) 체크인 → 신사이바시·아메무라 산책 → 미즈노 오코노미야키 저녁 → 글리코 사인 앞 커플 사진 → 도톤보리 관람차 → 우라난바에서 한잔.",
     journal: ""
   },
   {
@@ -76,10 +76,10 @@ export const tripDays: TripDay[] = [
   {
     day: 3,
     date: "7/4 토",
-    title: "신세카이 레트로 → 출국",
-    mood: "츠텐카쿠 아래 쿠시카츠로 마무리, 해 지기 전 공항으로",
+    title: "신세카이 레트로 → 18:15 출국",
+    mood: "츠텐카쿠와 쿠시카츠, 구로몬 선물까지 — 15시 반 라피트 전까지 알차게",
     summary:
-      "체크아웃·짐 맡기기 → 신세카이·츠텐카쿠 레트로 산책 → 쿠시카츠 다루마 점심 → 하루카스 300 전망대(선택) → 짐 픽업 → 라피트로 간사이공항 → 저녁 출국.",
+      "체크아웃·짐 맡기기 → 신세카이·츠텐카쿠 레트로 산책 → 쿠시카츠 다루마 점심 → 구로몬 시장 주전부리·선물 → 짐 픽업 → 라피트로 간사이공항 T2 → MM709 18:15 출국.",
     journal: ""
   }
 ];
@@ -112,11 +112,11 @@ export const tripStops: TripStop[] = [
     id: "kix-arrival",
     day: 1,
     date: "7/2 목",
-    time: "10:30",
-    title: "간사이공항 도착 (KIX)",
-    subtitle: "T1 입국 → 난카이 라피트 → 난바",
-    nameZh: "関西国際空港 (KIX) 第1ターミナル",
-    mrt: "난카이공항선 라피트 β → 難波駅 (38분, 편도 ¥1,490 / 외국인 할인권 있음)",
+    time: "13:15",
+    title: "간사이공항 T2 도착 (MM736)",
+    subtitle: "피치 T2 입국 → 셔틀로 T1 → 난카이 라피트 → 난바",
+    nameZh: "関西国際空港 (KIX) 第2ターミナル",
+    mrt: "T2 → 무료 셔틀 ~10분 → T1·난카이역 → 라피트 β 難波駅 (38분, ¥1,490 / 외국인 할인권 있음)",
     phrase: "すみません、南海電車の乗り場はどこですか？",
     phrasePron: "sumimasen, nankai densha no noriba wa doko desu ka?",
     phraseHint: "난카이 전철 타는 곳이 어디예요?",
@@ -124,43 +124,45 @@ export const tripStops: TripStop[] = [
     lat: 34.4347,
     lng: 135.2441,
     highlights: [
-      "항공편 확정되면 시간 수정 (앱에서 편집)",
+      "MM736 김포(11:25) → 간사이 T2 도착 ~13:15 (정확 시각 e-티켓 확인)",
+      "피치는 T2 전용 — 입국 후 무료 셔틀로 T1·난카이역 이동 (~10분)",
       "Visit Japan Web 미리 등록 → 입국심사 빠르게",
       "라피트 지정석 — 창가 나란히 앉기, 외국인 할인 티켓(¥1,300대) 체크",
       "공항에서 ICOCA 충전 + 현금 ¥ 인출 (세븐뱅크 ATM)"
     ],
     prompt: "도착 첫 셀카. 라피트 철인28호 얼굴 닮은 열차 앞에서 한 장.",
-    mapsQuery: "Kansai International Airport Terminal 1"
+    mapsQuery: "Kansai International Airport Terminal 2"
   },
   {
     id: "hotel-checkin",
     day: 1,
     date: "7/2 목",
-    time: "12:00",
-    title: "크로스호텔 오사카 — 짐 맡기기",
-    subtitle: "도톤보리 도보 1분, 미나미 베이스캠프",
-    nameZh: "クロスホテル大阪 (心斎橋・道頓堀)",
-    mrt: "난바역(なんば駅) 14번 출구 도보 3분 / 도톤보리 에비스바시 도보 1분",
-    phrase: "チェックインの前に荷物を預かってもらえますか？",
-    phrasePron: "chekku-in no mae ni nimotsu o azukatte moraemasu ka?",
-    phraseHint: "체크인 전에 짐 맡아주실 수 있나요?",
+    time: "16:00",
+    title: "그랑벨 호텔 오사카 — 체크인",
+    subtitle: "혼마치 디자이너스 호텔, 우리의 베이스캠프",
+    nameZh: "大阪グランベルホテル (本町・北久宝寺町2-6-7)",
+    mrt: "사카이스지혼마치역(堺筋本町駅) 도보 3분 / 혼마치역(本町駅) 도보 5분",
+    phrase: "予約しています。チェックインお願いします。",
+    phrasePron: "yoyaku shiteimasu. chekku-in onegai shimasu",
+    phraseHint: "예약했어요. 체크인 부탁드려요",
     category: "hotel",
-    lat: 34.6695,
-    lng: 135.5009,
+    lat: 34.6818,
+    lng: 135.5058,
     highlights: [
-      "글리코 사인까지 도보 1분 — 밤 산책 최적 입지",
-      "체크인 15:00 — 일단 짐만 맡기고 점심으로",
-      "예약 확정되면 호텔명/위치 앱에서 수정 (지도에서 핀 끌어서 이동)"
+      "라피트 난바 하차 → 미도스지선 2정거장 혼마치 (캐리어 동선 짧게)",
+      "신사이바시까지 지하철 1정거장·도보 12분 — 미나미 데이트 출발점",
+      "15시 정식 체크인 시간 — 짐 풀고 몸만 가볍게 나가기",
+      "신세카이(에비스초)까지 사카이스지선 직통 — Day 3 동선도 편함"
     ],
-    prompt: "베이스캠프 첫인상 한 줄. 방에서 도톤보리 보이는지.",
-    mapsQuery: "Cross Hotel Osaka"
+    prompt: "베이스캠프 첫인상 한 줄 + 방 뷰 한 컷.",
+    mapsQuery: "GRANBELL HOTEL OSAKA"
   },
   {
     id: "mizuno-okonomiyaki",
     day: 1,
     date: "7/2 목",
-    time: "12:40",
-    title: "미즈노 — 오코노미야키 점심",
+    time: "18:00",
+    title: "미즈노 — 오코노미야키 저녁",
     subtitle: "1945년 창업, 도톤보리 오코노미야키의 정석",
     nameZh: "美津の (みづの) 道頓堀",
     mrt: "난바역(なんば駅) 14번 출구 도보 4분",
@@ -173,41 +175,17 @@ export const tripStops: TripStop[] = [
     highlights: [
       "시그니처 야마이모야키 — 밀가루 대신 마 100% 반죽",
       "철판 카운터석이면 눈앞에서 구워주는 라이브",
-      "웨이팅 30분+ 흔함 — 12시 전 도착이 베스트",
+      "저녁 웨이팅 김 — 17:50 오픈런 느낌으로 줄 서기",
       "둘이 야마이모야키 + 믹스야키 나눠 먹기"
     ],
     prompt: "철판 위 사진 1장 + 야마이모 vs 믹스 승자 기록.",
     mapsQuery: "Mizuno Okonomiyaki Dotonbori"
   },
   {
-    id: "kuromon-market",
-    day: 1,
-    date: "7/2 목",
-    time: "14:30",
-    title: "구로몬 시장 — 주전부리 투어",
-    subtitle: "오사카의 부엌, 길거리 해산물·과일 디저트",
-    nameZh: "黒門市場",
-    mrt: "닛폰바시역(日本橋駅) 10번 출구 도보 2분",
-    phrase: "これを二つください。",
-    phrasePron: "kore o futatsu kudasai",
-    phraseHint: "이거 두 개 주세요",
-    category: "food",
-    lat: 34.6657,
-    lng: 135.5063,
-    highlights: [
-      "참치·우니·관자 꼬치 — 점심 직후니 한두 개만",
-      "여름 한정 — 차가운 멜론·복숭아 주스 / 컷과일",
-      "와규 꼬치는 비싼 집 말고 줄 선 집으로",
-      "16시 이후엔 닫는 가게 많음 — 오후 일찍 방문"
-    ],
-    prompt: "제일 맛있었던 한 입 + 가격 기록 (정산용).",
-    mapsQuery: "Kuromon Ichiba Market"
-  },
-  {
     id: "shinsaibashi-amemura",
     day: 1,
     date: "7/2 목",
-    time: "16:00",
+    time: "17:00",
     title: "신사이바시스지 + 아메리카무라",
     subtitle: "아케이드 쇼핑 & 빈티지 골목 산책",
     nameZh: "心斎橋筋商店街 · アメリカ村",
@@ -231,9 +209,9 @@ export const tripStops: TripStop[] = [
     id: "uranamba-dinner",
     day: 1,
     date: "7/2 목",
-    time: "18:30",
-    title: "우라난바 — 이자카야 골목 저녁",
-    subtitle: "로컬 분위기 골목에서 사케 + 안주",
+    time: "21:30",
+    title: "우라난바 — 이자카야 골목 한잔",
+    subtitle: "저녁은 끝났으니 가볍게 — 로컬 골목 2차",
     nameZh: "裏なんば (ウラなんば) 居酒屋横丁",
     mrt: "난바역(なんば駅) / 닛폰바시역(日本橋駅) 사이 골목",
     phrase: "とりあえず生二つと、おすすめを二品お願いします。",
@@ -244,9 +222,9 @@ export const tripStops: TripStop[] = [
     lng: 135.5046,
     highlights: [
       "관광객보다 로컬이 많은 골목 — 진짜 오사카의 밤",
-      "다찌노미·스시·교자·스미비야키 가게 골라 들어가기",
-      "한 곳에서 길게 말고 두 곳 가볍게 호핑",
-      "내일 아침 여유 있으니 부담 없이"
+      "다찌노미에서 사케 한 잔 + 안주 한 접시면 충분",
+      "피곤하면 패스하고 호텔 라운지/편의점 츄하이로",
+      "혼마치 복귀는 미도스지선 난바→혼마치 4분"
     ],
     prompt: "오늘 들어간 가게 이름 + 베스트 안주 한 줄.",
     mapsQuery: "Uranamba Osaka izakaya"
@@ -255,7 +233,7 @@ export const tripStops: TripStop[] = [
     id: "glico-night",
     day: 1,
     date: "7/2 목",
-    time: "20:30",
+    time: "20:00",
     title: "도톤보리 글리코 사인 — 커플 사진",
     subtitle: "에비스바시 위에서, 오사카에 온 증명샷",
     nameZh: "道頓堀 グリコサイン · 戎橋",
@@ -279,7 +257,7 @@ export const tripStops: TripStop[] = [
     id: "ferris-don-quijote",
     day: 1,
     date: "7/2 목",
-    time: "21:30",
+    time: "20:40",
     title: "돈키호테 에비스타워 관람차 (선택)",
     subtitle: "도톤보리 강 위를 도는 타원형 관람차",
     nameZh: "ドン・キホーテ道頓堀店 観覧車「えびすタワー」",
@@ -523,28 +501,28 @@ export const tripStops: TripStop[] = [
     date: "7/4 토",
     time: "09:30",
     title: "체크아웃 + 짐 맡기기",
-    subtitle: "짐은 호텔에 — 몸 가볍게 마지막 반나절",
-    nameZh: "チェックアウト · 荷物預かり",
-    mrt: "호텔 프런트",
+    subtitle: "짐은 그랑벨 프런트에 — 몸 가볍게 마지막 반나절",
+    nameZh: "チェックアウト · 荷物預かり (大阪グランベルホテル)",
+    mrt: "호텔 프런트 — 신세카이는 사카이스지혼마치→에비스초 직통 8분",
     phrase: "夕方まで荷物を預かってもらえますか？",
     phrasePron: "yūgata made nimotsu o azukatte moraemasu ka?",
     phraseHint: "저녁까지 짐 맡아주실 수 있나요?",
     category: "hotel",
-    lat: 34.6695,
-    lng: 135.5009,
+    lat: 34.6818,
+    lng: 135.5058,
     highlights: [
       "10시 전 체크아웃 — 짐은 프런트에 (보통 무료)",
       "여권·지갑·보조배터리만 데이백에",
       "면세 쇼핑백은 캐리어 맨 위 (공항 검사 대비)"
     ],
     prompt: "캐리어 무게 어림 + 빠뜨린 것 없는지 서로 크로스체크.",
-    mapsQuery: "Cross Hotel Osaka"
+    mapsQuery: "GRANBELL HOTEL OSAKA"
   },
   {
     id: "shinsekai-tsutenkaku",
     day: 3,
     date: "7/4 토",
-    time: "10:30",
+    time: "10:20",
     title: "신세카이 — 츠텐카쿠 레트로 산책",
     subtitle: "쇼와 감성 그대로, 빌리켄 발바닥 만지기",
     nameZh: "新世界 · 通天閣",
@@ -589,10 +567,34 @@ export const tripStops: TripStop[] = [
     mapsQuery: "Kushikatsu Daruma Shinsekai Honten"
   },
   {
+    id: "kuromon-market",
+    day: 3,
+    date: "7/4 토",
+    time: "13:00",
+    title: "구로몬 시장 — 주전부리 + 선물",
+    subtitle: "오사카의 부엌 — 마지막 날 입가심과 기념 쇼핑",
+    nameZh: "黒門市場",
+    mrt: "사카이스지선 에비스초→닛폰바시 2정거장, 10번 출구 도보 2분",
+    phrase: "これを二つください。",
+    phrasePron: "kore o futatsu kudasai",
+    phraseHint: "이거 두 개 주세요",
+    category: "food",
+    lat: 34.6657,
+    lng: 135.5063,
+    highlights: [
+      "쿠시카츠 점심 직후니 디저트 위주 — 멜론·복숭아 주스, 컷과일",
+      "참치·우니 꼬치는 둘이 하나씩만 — 배보다 추억",
+      "상온 선물(과자·조미료)은 여기서 마지막 픽업",
+      "14:30 전엔 출발 — 짐 픽업·라피트 역산"
+    ],
+    prompt: "제일 맛있었던 한 입 + 가격 기록 (정산용).",
+    mapsQuery: "Kuromon Ichiba Market"
+  },
+  {
     id: "harukas-300",
     day: 3,
     date: "7/4 토",
-    time: "13:30",
+    time: "14:00",
     title: "하루카스 300 전망대 (선택)",
     subtitle: "일본 최고층 빌딩에서 낮의 오사카 한눈에",
     nameZh: "あべのハルカス展望台「ハルカス300」",
@@ -616,11 +618,11 @@ export const tripStops: TripStop[] = [
     id: "luggage-rapit",
     day: 3,
     date: "7/4 토",
-    time: "15:30",
+    time: "14:50",
     title: "짐 픽업 → 라피트로 공항 이동",
-    subtitle: "난바역 → 간사이공항 38분",
-    nameZh: "なんば駅 → 関西空港 (ラピート)",
-    mrt: "난카이 난바역 2F 개찰 — 라피트 지정석",
+    subtitle: "혼마치 → 난바 → 라피트 38분",
+    nameZh: "本町 → なんば駅 → 関西空港 (ラピート)",
+    mrt: "미도스지선 혼마치→난바 4분 → 난카이 난바역 2F 라피트 지정석",
     phrase: "関西空港行きのラピートはこのホームですか？",
     phrasePron: "kansai kūkō yuki no rapīto wa kono hōmu desu ka?",
     phraseHint: "간사이공항행 라피트 이 승강장 맞아요?",
@@ -628,9 +630,9 @@ export const tripStops: TripStop[] = [
     lat: 34.6643,
     lng: 135.5023,
     highlights: [
-      "호텔 짐 픽업 → 난카이 난바역 도보 6분",
+      "14:50 호텔 짐 픽업 → 15:30 전후 라피트 탑승 목표",
+      "라피트 16:10경 KIX T1 도착 → 무료 셔틀로 T2 (~10분)",
       "라피트 지정석 미리 예매해두면 마음 편함",
-      "출발 시간 = 비행기 3시간 전 역산해서 조정",
       "ICOCA 잔액은 편의점에서 털기"
     ],
     prompt: "차창 밖 마지막 오사카 풍경 한 컷.",
@@ -640,11 +642,11 @@ export const tripStops: TripStop[] = [
     id: "kix-departure",
     day: 3,
     date: "7/4 토",
-    time: "17:00",
-    title: "간사이공항 — 저녁 출국",
-    subtitle: "체크인 → 면세 → 게이트, 여행 회고",
-    nameZh: "関西国際空港 出発",
-    mrt: "난카이 간사이공항역 → T1 직결",
+    time: "16:30",
+    title: "간사이공항 T2 — MM709 18:15 출국",
+    subtitle: "체크인 → 보안 → 게이트, 여행 회고",
+    nameZh: "関西国際空港 第2ターミナル 出発",
+    mrt: "난카이 간사이공항역(T1) → 무료 셔틀 ~10분 → T2",
     phrase: "搭乗ゲートは何番ですか？",
     phrasePron: "tōjō gēto wa nanban desu ka?",
     phraseHint: "탑승 게이트 몇 번이에요?",
@@ -652,22 +654,23 @@ export const tripStops: TripStop[] = [
     lat: 34.4347,
     lng: 135.2441,
     highlights: [
-      "항공편 확정되면 시간 수정 — 출발 2시간 전 체크인",
-      "면세점: 로이스·바통도르·위스키 마지막 픽업",
-      "551호라이 돼지만두 공항점 — 기내 냄새 주의, 포장은 선물용만",
+      "MM709 18:15 출발 — 피치 체크인 마감 17:25 (출발 50분 전)",
+      "T2는 면세·식당이 단출 — 쇼핑·식사는 시내/T1에서 미리",
+      "기내식 불포함 — 탑승 전 간단히 먹거나 간식 챙기기",
       "비행 중 둘이 사진 고르며 베스트 10 선정"
     ],
     prompt: "여행 총평 한 줄씩 — 다음 여행지 후보까지 정하기.",
-    mapsQuery: "Kansai International Airport Departures"
+    mapsQuery: "Kansai International Airport Terminal 2"
   }
 ];
 
 export const essentials = [
-  "항공편 확정되면 Day 1 도착 / Day 3 출국 스톱 시간 수정",
+  "7/2 김포공항 10:00 도착 목표 (MM736 11:25 출발 — 체크인 마감 10:35)",
+  "피치항공은 간사이 T2 — 갈 때·올 때 모두 T1↔T2 무료 셔틀 ~10분 역산",
+  "기내식 불포함 — 김포에서 아침, 귀국편 탑승 전 간단히 먹기",
   "우메다 공중정원 입장권 온라인 예매 (줄 스킵, 일몰 19:15 기준 18:45 입장)",
-  "미즈노·키지·다루마 모두 웨이팅 명소 — 피크 30분 전 도착",
+  "미즈노(저녁)·키지·다루마 모두 웨이팅 명소 — 피크 30분 전 도착",
   "7월 오사카 = 한여름 (30℃+, 습함) — 오전 야외, 오후 실내 동선",
-  "야외 일정(오사카성·신세카이)은 더위 보고 순서 스왑 OK",
   "Visit Japan Web 사전 등록 (7/2 도착 전)"
 ];
 
@@ -680,29 +683,31 @@ export const priorityLabels: Record<TripPriority, string> = {
 export const stopPlanMeta: Record<string, StopPlanMeta> = {
   "kix-arrival": {
     priority: "must",
-    durationMinutes: 60,
-    alternatives: ["공항 리무진 버스 → 난바 OCAT", "JR 하루카 → 텐노지 경유"],
-    flexTip: "입국 줄이 길면 라피트 다음 편으로 — 지정석은 현장 변경 가능."
+    durationMinutes: 90,
+    alternatives: ["공항 리무진 버스 → 난바 OCAT", "공항급행+사카이스지선 (텐가차야 환승, 호텔 직통)"],
+    flexTip: "T2 입국·셔틀 포함 90분 잡기 — 줄 길면 라피트 다음 편으로 (지정석 현장 변경 가능).",
+    riskLevel: "medium",
+    riskNote: "T2 ↔ 난카이역(T1) 셔틀 시간 누락 주의"
   },
   "hotel-checkin": {
     priority: "must",
-    durationMinutes: 30,
-    alternatives: ["역 코인로커에 짐 넣고 바로 점심"],
-    flexTip: "12시 전 도착하면 짐만 맡기고 미즈노 줄부터 서기."
+    durationMinutes: 40,
+    alternatives: ["짐만 맡기고 바로 신사이바시로"],
+    flexTip: "16시면 정식 체크인 — 방에 짐 풀고 몸만 가볍게 출발."
   },
   "mizuno-okonomiyaki": {
     priority: "must",
-    durationMinutes: 70,
+    durationMinutes: 80,
     alternatives: ["치보 도톤보리 본점", "오코노미야키 산평", "후쿠타로 (난바)"],
-    flexTip: "웨이팅 45분 넘으면 치보로 스위치 — 맛 차이보다 시간이 아까움.",
+    flexTip: "저녁 웨이팅 김 — 17:50 도착 목표, 45분 넘으면 치보로 스위치.",
     riskLevel: "medium",
-    riskNote: "평일 점심도 웨이팅 30분+ 흔함"
+    riskNote: "저녁 피크 웨이팅 1시간 가능"
   },
   "kuromon-market": {
     priority: "optional",
     durationMinutes: 60,
     alternatives: ["센니치마에 도구야스지 (주방거리)", "난바워크 지하상가"],
-    flexTip: "점심 배부르면 과일주스+한 입만. 16시 전엔 도착해야 활기 있음."
+    flexTip: "14:30 전 출발 엄수 — 빠듯하면 스킵하고 바로 짐 픽업."
   },
   "shinsaibashi-amemura": {
     priority: "optional",
@@ -711,12 +716,10 @@ export const stopPlanMeta: Record<string, StopPlanMeta> = {
     flexTip: "더우면 아케이드 안으로만. 호리에 카페 골목까지 가면 +30분."
   },
   "uranamba-dinner": {
-    priority: "must",
-    durationMinutes: 90,
-    alternatives: ["도톤보리 카니도라쿠 (게 요리)", "야키니쿠 — 츠루하시 이동 (지하철 10분)"],
-    flexTip: "금~토 저녁 인기 가게는 만석 — 18시 초입 진입이 안전.",
-    riskLevel: "medium",
-    riskNote: "인기 다찌노미는 줄·만석 잦음"
+    priority: "optional",
+    durationMinutes: 60,
+    alternatives: ["호텔 라운지/바", "편의점 츄하이 + 호텔"],
+    flexTip: "2차 개념 — 첫날 무리 금지, 컨디션 보고 한 곳만."
   },
   "glico-night": {
     priority: "must",
@@ -817,23 +820,25 @@ export const stopPlanMeta: Record<string, StopPlanMeta> = {
     riskNote: "토요일 점심 웨이팅"
   },
   "harukas-300": {
-    priority: "optional",
-    durationMinutes: 80,
-    alternatives: ["16층 무료 테라스만", "신사이바시 마지막 쇼핑"],
-    flexTip: "시간·체력 빠듯하면 스킵 1순위. 어제 공중정원으로 야경은 이미 충분.",
+    priority: "backup",
+    durationMinutes: 60,
+    alternatives: ["16층 무료 테라스만", "구로몬 시장에 시간 더 쓰기"],
+    flexTip: "구로몬과 양자택일 — 둘 다 하면 라피트가 빠듯해짐. 어제 공중정원으로 야경은 이미 충분.",
     bookingStatus: "당일권 가능"
   },
   "luggage-rapit": {
     priority: "must",
-    durationMinutes: 70,
-    alternatives: ["공항 리무진 버스 (난바 OCAT)", "JR 하루카 (텐노지에서)"],
-    flexTip: "비행기 3시간 전 난바 출발이 안전 — 라피트 지정석 예매."
+    durationMinutes: 80,
+    alternatives: ["공항 리무진 버스 (난바 OCAT)", "공항급행+사카이스지선 (텐가차야 환승)"],
+    flexTip: "18:15 출국 = 15:30 라피트가 마지노선 — 지정석 예매해두기.",
+    riskLevel: "medium",
+    riskNote: "T1→T2 셔틀 ~10분 추가 소요"
   },
   "kix-departure": {
     priority: "must",
-    durationMinutes: 150,
+    durationMinutes: 105,
     alternatives: [],
-    flexTip: "절대 스킵 불가. 면세 쇼핑 시간 포함 2.5시간 잡기."
+    flexTip: "절대 스킵 불가. 피치 체크인 마감 17:25 (출발 50분 전) — 16:30 T2 도착 목표."
   }
 };
 
