@@ -1087,7 +1087,7 @@
       "label": "VjwState",
       "file_type": "code",
       "source_file": "app/components/DepartureWidget.tsx",
-      "source_location": "L24",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "components_departurewidget_vjwstate",
       "community": 3,
@@ -1097,7 +1097,7 @@
       "label": "Mode",
       "file_type": "code",
       "source_file": "app/components/DepartureWidget.tsx",
-      "source_location": "L26",
+      "source_location": "L29",
       "_origin": "ast",
       "id": "components_departurewidget_mode",
       "community": 3,
@@ -1107,7 +1107,7 @@
       "label": "ReadinessRow",
       "file_type": "code",
       "source_file": "app/components/DepartureWidget.tsx",
-      "source_location": "L28",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "components_departurewidget_readinessrow",
       "community": 3,
@@ -1117,7 +1117,7 @@
       "label": "daysBetween()",
       "file_type": "code",
       "source_file": "app/components/DepartureWidget.tsx",
-      "source_location": "L38",
+      "source_location": "L41",
       "_origin": "ast",
       "id": "components_departurewidget_daysbetween",
       "community": 3,
@@ -1127,7 +1127,7 @@
       "label": "passportComplete()",
       "file_type": "code",
       "source_file": "app/components/DepartureWidget.tsx",
-      "source_location": "L44",
+      "source_location": "L47",
       "_origin": "ast",
       "id": "components_departurewidget_passportcomplete",
       "community": 3,
@@ -1137,7 +1137,7 @@
       "label": "DepartureWidget()",
       "file_type": "code",
       "source_file": "app/components/DepartureWidget.tsx",
-      "source_location": "L48",
+      "source_location": "L51",
       "_origin": "ast",
       "id": "components_departurewidget_departurewidget",
       "community": 3,
@@ -10135,9 +10135,9 @@
       "source_file": "app/components/OsakaInfo.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_osakainfo",
-      "target": "lib_speak",
-      "confidence_score": 1.0
+      "target": "lib_speak"
     },
     {
       "relation": "imports",
@@ -10146,9 +10146,9 @@
       "source_file": "app/components/OsakaInfo.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_osakainfo",
-      "target": "lib_speak_speak",
-      "confidence_score": 1.0
+      "target": "lib_speak_speak"
     },
     {
       "relation": "imports",
@@ -10157,9 +10157,9 @@
       "source_file": "app/components/OsakaInfo.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "components_osakainfo",
-      "target": "lib_speak_ttssupported",
-      "confidence_score": 1.0
+      "target": "lib_speak_ttssupported"
     },
     {
       "relation": "imports",
@@ -17033,5 +17033,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "488d10a7b2db00606abd3e02d58920a3c6056353"
+  "built_at_commit": "26ff7439fb1c6c6f71f89abde5dba01da19e93bc"
 }

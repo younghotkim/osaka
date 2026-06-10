@@ -95,8 +95,8 @@
     "semantic_hash": ""
   },
   "app/components/DepartureWidget.tsx": {
-    "mtime": 1781059258.4703937,
-    "ast_hash": "a43c1ea6d438ebf34ed1db0678efccc3",
+    "mtime": 1781069789.321724,
+    "ast_hash": "4bb93dbbf153493c7bfbab491efeb234",
     "semantic_hash": ""
   },
   "app/components/ExpenseDashboard.tsx": {
