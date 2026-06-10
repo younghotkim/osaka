@@ -1,7 +1,7 @@
 # Graph Report - osaka  (2026-06-10)
 
 ## Corpus Check
-- 79 files · ~50,578 words
+- 79 files · ~50,603 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `77c89775`
+- Built from commit: `fb432cfd`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -62,16 +62,16 @@
 10. `POST()` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `rowToMemory()` --calls--> `normalizeMemory()`  [EXTRACTED]
-  app/api/memories/route.ts → lib/memory-types.ts
 - `rowToEntry()` --calls--> `normalizeExpenseEntry()`  [EXTRACTED]
   app/api/expenses/route.ts → lib/expense-ledger.ts
-- `POST()` --calls--> `normalizeMemory()`  [EXTRACTED]
+- `rowToMemory()` --calls--> `normalizeMemory()`  [EXTRACTED]
   app/api/memories/route.ts → lib/memory-types.ts
-- `rowToItem()` --calls--> `normalizePackBook()`  [EXTRACTED]
-  app/api/packing/route.ts → lib/packing.ts
-- `POST()` --calls--> `isTone()`  [EXTRACTED]
-  app/api/reply/route.ts → lib/translate.ts
+- `POST()` --calls--> `createSupabaseServerClient()`  [EXTRACTED]
+  app/api/memories/route.ts → lib/supabase-server.ts
+- `POST()` --calls--> `isSupabaseConfigured()`  [EXTRACTED]
+  app/api/memories/route.ts → lib/supabase-server.ts
+- `PUT()` --calls--> `createSupabaseServerClient()`  [EXTRACTED]
+  app/api/memories/route.ts → lib/supabase-server.ts
 
 ## Import Cycles
 - None detected.
@@ -80,11 +80,11 @@
 
 ### Community 0 - "Community 0"
 Cohesion: 0.07
-Nodes (55): MemoriesShell(), CommentThread(), TwdKrwLabel(), useTwdToKrw(), GpsAutoStatus(), categoryIcon(), ItineraryContext, ItineraryProvider() (+47 more)
+Nodes (58): MemoriesShell(), CommentThread(), TwdKrwLabel(), useTwdToKrw(), GpsAutoStatus(), categoryIcon(), useItineraryContext(), catEmoji (+50 more)
 
 ### Community 1 - "Community 1"
-Cohesion: 0.08
-Nodes (45): DELETE(), entryToRow(), GET(), POST(), PUT(), rowToEntry(), DELETE(), GET() (+37 more)
+Cohesion: 0.09
+Nodes (37): DELETE(), entryToRow(), GET(), POST(), PUT(), rowToEntry(), DELETE(), GET() (+29 more)
 
 ### Community 2 - "Community 2"
 Cohesion: 0.08
@@ -139,8 +139,8 @@ Cohesion: 0.19
 Nodes (14): FlightStatusBadge(), AviationFlight, AviationLeg, cache, GET(), leg(), mapState(), FlightLeg (+6 more)
 
 ### Community 15 - "Community 15"
-Cohesion: 0.14
-Nodes (12): dayRouteColors, GoogleBounds, GoogleInfoWindow, GoogleLatLng, GoogleMap, GoogleMarker, GooglePolyline, MapView() (+4 more)
+Cohesion: 0.11
+Nodes (17): ItineraryContext, ItineraryProvider(), ItineraryValue, dayRouteColors, GoogleBounds, GoogleInfoWindow, GoogleLatLng, GoogleMap (+9 more)
 
 ### Community 16 - "Community 16"
 Cohesion: 0.18
@@ -164,7 +164,7 @@ Nodes (6): OsakaInfo(), InfoCard, InfoLine, osakaInfoCards, osakaPhrases, Phrase
 
 ### Community 21 - "Community 21"
 Cohesion: 0.32
-Nodes (5): PhotoUploader(), ToriiSpinner(), compressImage(), CompressOptions, DEFAULTS
+Nodes (5): PhotoUploader(), TakoyakiSpinner(), compressImage(), CompressOptions, DEFAULTS
 
 ### Community 22 - "Community 22"
 Cohesion: 0.29
@@ -194,17 +194,17 @@ Nodes (4): VaultBook, VaultItem, useVault(), VaultSyncStatus
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `isSupabaseConfigured()` connect `Community 1` to `Community 2`?**
+- **Why does `isSupabaseConfigured()` connect `Community 1` to `Community 0`, `Community 2`?**
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
-- **Why does `createSupabaseServerClient()` connect `Community 1` to `Community 2`?**
+- **Why does `createSupabaseServerClient()` connect `Community 1` to `Community 0`, `Community 2`?**
   _High betweenness centrality (0.017) - this node is a cross-community bridge._
 - **Why does `TranslateResponse` connect `Community 5` to `Community 4`?**
   _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **What connects `GoogleDirectionsResponse`, `ErApiResponse`, `cache` to the rest of the system?**
   _160 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.06749482401656315 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0654490106544901 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
-  _Cohesion score 0.08051948051948052 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09435707678075855 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
   _Cohesion score 0.08456659619450317 - nodes in this community are weakly interconnected._
