@@ -351,12 +351,12 @@ export function MiniRouteStrip({
     .join("&");
   const path = to ? `&path=color:0xd4356ccc|weight:4|${from.lat},${from.lng}|${to.lat},${to.lng}` : "";
   const styles = [
-    "&style=feature:water|color:0x1a103d",
-    "&style=feature:road|element:geometry|color:0x241548",
-    "&style=feature:landscape|color:0x150a30",
+    "&style=feature:water|color:0xcfe3df",
+    "&style=feature:road|element:geometry|color:0xf9efe9",
+    "&style=feature:landscape|color:0xf4e7e0",
     "&style=feature:poi|visibility:off",
-    "&style=element:labels.text.fill|color:0xc6b0e6",
-    "&style=element:labels.text.stroke|color:0x0a0524"
+    "&style=element:labels.text.fill|color:0x6b4a5a",
+    "&style=element:labels.text.stroke|color:0xfdf3f0"
   ].join("");
   const src = `https://maps.googleapis.com/maps/api/staticmap?center=${center}&zoom=${to ? 14 : 15}&size=720x180&scale=2&${markers}${path}${styles}&key=${apiKey}`;
 

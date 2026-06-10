@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { Trash2, Upload } from "lucide-react";
 import { useConfirm } from "./ConfirmProvider";
 import { PhotoLightbox } from "./PhotoLightbox";
-import { ToriiSpinner } from "./ToriiSpinner";
+import { TakoyakiSpinner } from "./TakoyakiSpinner";
 import { compressImage } from "@/lib/image-compress";
 
 export function PhotoUploader({
@@ -72,7 +72,7 @@ export function PhotoUploader({
           onClick={() => inputRef.current?.click()}
           disabled={uploading}
         >
-          {uploading ? <ToriiSpinner size={14} /> : <Upload size={14} />}
+          {uploading ? <TakoyakiSpinner size={14} /> : <Upload size={14} />}
           {uploading ? "업로드 중…" : "사진 추가"}
         </button>
         <input

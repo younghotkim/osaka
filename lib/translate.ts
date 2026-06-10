@@ -111,7 +111,7 @@ export const toneExamples: Record<TonePreset, string[]> = {
   urgent: [
     "지갑을 잃어버렸어요",
     "여기가 어디예요? 길을 잃었어요",
-    "도와주세요, 친구가 아파요"
+    "도와주세요, 일행이 아파요"
   ]
 };
 

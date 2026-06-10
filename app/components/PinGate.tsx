@@ -4,7 +4,7 @@ import { Delete } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 
-const PIN = "0008";
+const PIN = "0102";
 const UNLOCK_KEY = "yj-osaka-pin-unlocked-v1";
 const PIN_LENGTH = 4;
 
@@ -95,7 +95,7 @@ export function PinGate({ children }: { children: React.ReactNode }) {
         <header className="pin-gate__head">
           <span className="pin-gate__kicker">Y&amp;S · 大阪 食い倒れ DIARY</span>
           <h1>비밀번호를 입력해 주세요</h1>
-          <p>20년지기 우정여행 · 네 자리 비밀번호</p>
+          <p>둘만의 食い倒れ 여행 · 우리만 아는 네 자리</p>
         </header>
 
         <div
