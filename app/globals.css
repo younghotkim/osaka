@@ -1540,12 +1540,22 @@ a {
     padding: 9px 12px;
   }
 
+  /* on phones the stage bottom can sit behind the fixed nav — dock the
+     hint bar and the add-stop chip under the top route bar instead */
   .map-floating--bottom {
     right: 10px;
-    bottom: 10px;
+    top: 64px;
+    bottom: auto;
     left: 10px;
     padding: 10px 12px;
     font-size: 13px;
+  }
+
+  .map-floating--add {
+    right: 10px;
+    top: 116px;
+    bottom: auto;
+    left: 10px;
   }
 
   .panel-stack {
@@ -6324,12 +6334,19 @@ a {
   }
 
   .info-card--phrases li {
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) auto 24px;
     gap: 4px 10px;
   }
 
   .info-phrase__pinyin {
     grid-column: 1 / -1;
+  }
+
+  /* pin the speak button to the first row, right column (auto-placement would
+     push it below the full-width pinyin line) */
+  .info-phrase__speak {
+    grid-column: 3;
+    grid-row: 1;
   }
 
   .pack-add select {
