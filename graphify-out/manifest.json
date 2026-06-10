@@ -145,8 +145,8 @@
     "semantic_hash": ""
   },
   "app/components/OsakaInfo.tsx": {
-    "mtime": 1781059639.5368547,
-    "ast_hash": "deeee5f9da79006722fb5ccc8210fd62",
+    "mtime": 1781068320.044787,
+    "ast_hash": "8e06d33f8683c0842481bf9b4e1aca87",
     "semantic_hash": ""
   },
   "app/components/PackingList.tsx": {
@@ -195,8 +195,8 @@
     "semantic_hash": ""
   },
   "app/components/TranslatePanel.tsx": {
-    "mtime": 1781059735.449255,
-    "ast_hash": "7da867a12833feb9fb87d3f060f7f33a",
+    "mtime": 1781068247.3120873,
+    "ast_hash": "2515d14fea898ad5334d61c40b3abd84",
     "semantic_hash": ""
   },
   "app/components/TravelerCards.tsx": {
@@ -235,8 +235,8 @@
     "semantic_hash": ""
   },
   "app/page.tsx": {
-    "mtime": 1781067511.5592585,
-    "ast_hash": "989093d3f13010f4c1adc8647ed4b71d",
+    "mtime": 1781068308.1791866,
+    "ast_hash": "619a037e5f4a6dfbe33780200023b3ae",
     "semantic_hash": ""
   },
   "app/recap/print/page.tsx": {
@@ -295,8 +295,8 @@
     "semantic_hash": ""
   },
   "lib/reply.ts": {
-    "mtime": 1781059735.445655,
-    "ast_hash": "dd8fa9794a38f9328615a0ed98e6c32d",
+    "mtime": 1781068229.3840868,
+    "ast_hash": "29dbed9403cdf65e45017358cbb6fa1c",
     "semantic_hash": ""
   },
   "lib/speak.ts": {
@@ -305,8 +305,8 @@
     "semantic_hash": ""
   },
   "lib/suggest.ts": {
-    "mtime": 1781059735.449255,
-    "ast_hash": "ca5455da747b5a0a0a0a1c410c3758c9",
+    "mtime": 1781068209.02919,
+    "ast_hash": "024e5da0edaf75ca0e8ac7cde0b6cee8",
     "semantic_hash": ""
   },
   "lib/supabase-server.ts": {
@@ -315,8 +315,8 @@
     "semantic_hash": ""
   },
   "lib/translate.ts": {
-    "mtime": 1781067692.1615222,
-    "ast_hash": "940c89dbdf1e5bbd8026bac110e26163",
+    "mtime": 1781068180.5616186,
+    "ast_hash": "e0f451894b9bc44b19283cab142df929",
     "semantic_hash": ""
   },
   "lib/travelers.ts": {

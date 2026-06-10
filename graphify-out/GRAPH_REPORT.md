@@ -1,16 +1,16 @@
 # Graph Report - osaka  (2026-06-10)
 
 ## Corpus Check
-- 79 files · ~50,603 words
+- 79 files · ~50,491 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 552 nodes · 1085 edges · 35 communities (29 shown, 6 thin omitted)
+- 552 nodes · 1089 edges · 35 communities (29 shown, 6 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `fb432cfd`
+- Built from commit: `488d10a7`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -99,8 +99,8 @@ Cohesion: 0.08
 Nodes (15): langLabel, Mode, modeMeta, modeOrder, Pair, Persisted, PhotoResult, Props (+7 more)
 
 ### Community 5 - "Community 5"
-Cohesion: 0.13
-Nodes (21): AltPhrasing, buildSystemPrompt(), buildUserMessage(), detectLang(), Direction, isDirection(), LangCode, sharedContext (+13 more)
+Cohesion: 0.17
+Nodes (10): AltPhrasing, detectLang(), Direction, LangCode, sharedContext, toneExamples, toneInstruction, toneOrder (+2 more)
 
 ### Community 6 - "Community 6"
 Cohesion: 0.10
@@ -151,16 +151,16 @@ Cohesion: 0.29
 Nodes (8): PhotoBlock, PhotoScene, PhotoTranslateResponse, normalize(), OpenAIResponse, parseJsonLoose(), POST(), SYSTEM_PROMPT
 
 ### Community 18 - "Community 18"
-Cohesion: 0.33
-Nodes (8): ensureVoices(), LANG_TAG, pickVoice(), PREFERRED, speak(), SpeakLang, stopSpeaking(), ttsSupported()
+Cohesion: 0.18
+Nodes (14): OsakaInfo(), InfoCard, InfoLine, osakaInfoCards, osakaPhrases, Phrase, ensureVoices(), LANG_TAG (+6 more)
 
 ### Community 19 - "Community 19"
 Cohesion: 0.25
 Nodes (8): combineSync(), HomeShell(), minutesFromTimeString(), pickCurrentStop(), todayIso(), useExpenses(), usePacking(), useTravelers()
 
 ### Community 20 - "Community 20"
-Cohesion: 0.32
-Nodes (6): OsakaInfo(), InfoCard, InfoLine, osakaInfoCards, osakaPhrases, Phrase
+Cohesion: 0.29
+Nodes (11): buildSystemPrompt(), buildUserMessage(), isDirection(), cache, cacheKey(), dedupKey(), normalize(), OpenAIResponse (+3 more)
 
 ### Community 21 - "Community 21"
 Cohesion: 0.32
@@ -194,12 +194,12 @@ Nodes (4): VaultBook, VaultItem, useVault(), VaultSyncStatus
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `isSupabaseConfigured()` connect `Community 1` to `Community 0`, `Community 2`?**
-  _High betweenness centrality (0.017) - this node is a cross-community bridge._
-- **Why does `createSupabaseServerClient()` connect `Community 1` to `Community 0`, `Community 2`?**
-  _High betweenness centrality (0.017) - this node is a cross-community bridge._
-- **Why does `TranslateResponse` connect `Community 5` to `Community 4`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
+- **Why does `ttsSupported()` connect `Community 18` to `Community 4`?**
+  _High betweenness centrality (0.117) - this node is a cross-community bridge._
+- **Why does `speak()` connect `Community 18` to `Community 4`?**
+  _High betweenness centrality (0.060) - this node is a cross-community bridge._
+- **Why does `OsakaInfo()` connect `Community 18` to `Community 6`?**
+  _High betweenness centrality (0.058) - this node is a cross-community bridge._
 - **What connects `GoogleDirectionsResponse`, `ErApiResponse`, `cache` to the rest of the system?**
   _160 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
