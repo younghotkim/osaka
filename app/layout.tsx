@@ -6,7 +6,7 @@ import { PwaRegister } from "./components/PwaRegister";
 import { TranslateFab } from "./components/TranslateFab";
 
 export const metadata: Metadata = {
-  title: "Y&S Osaka · 道頓堀 Neon Trip Diary",
+  title: "Y&S Osaka · 大阪 食い倒れ Trip Diary",
   description: "7.2-7.4 오사카 둘만의 여행 — 일정·준비·기록·회고",
   applicationName: "Y&S Osaka",
   appleWebApp: {

@@ -589,7 +589,7 @@ function HomeShell() {
             </strong>
             <small>
               <span className="brand__dot" aria-hidden="true" />
-              7.2 — 7.4 · 道頓堀 NEON DIARY
+              7.2 — 7.4 · 食い倒れ DIARY
             </small>
           </div>
         </div>

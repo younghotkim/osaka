@@ -205,7 +205,7 @@ export default function RecapPrintPage() {
         <div className="book-cover__inner">
           <header className="book-cover__head">
             <JapanFlag className="book-cover__flag" />
-            <span className="book-cover__kicker">道頓堀 NEON DIARY</span>
+            <span className="book-cover__kicker">大阪 食い倒れ DIARY</span>
           </header>
           <h1 className="book-cover__title">
             Y &amp; J<br />
@@ -420,7 +420,7 @@ export default function RecapPrintPage() {
       )}
 
       <footer className="book-foot">
-        <span>Y &amp; S · 道頓堀 NEON DIARY · 2026</span>
+        <span>Y &amp; S · 大阪 食い倒れ DIARY · 2026</span>
         <small>둘이 같이 쓴 작은 여행 일기</small>
       </footer>
 

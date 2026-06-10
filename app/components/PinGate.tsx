@@ -93,7 +93,7 @@ export function PinGate({ children }: { children: React.ReactNode }) {
       </div>
       <div className="pin-gate__card">
         <header className="pin-gate__head">
-          <span className="pin-gate__kicker">Y&amp;S · 道頓堀 NEON DIARY</span>
+          <span className="pin-gate__kicker">Y&amp;S · 大阪 食い倒れ DIARY</span>
           <h1>비밀번호를 입력해 주세요</h1>
           <p>20년지기 우정여행 · 네 자리 비밀번호</p>
         </header>
