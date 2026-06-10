@@ -1,5 +1,6 @@
-// Reply mode: the other party said something in Japanese. We translate their
-// line to Korean AND suggest 3–4 short Japanese replies from different angles.
+// Reply mode: the other party (staff, clerk, driver, local) said something in
+// Japanese. We translate their line to Korean AND suggest 3–4 short Japanese
+// replies from different angles.
 
 import { toneMeta, type TonePreset } from "@/lib/translate";
 
@@ -24,13 +25,13 @@ export type ReplyResponse = {
 const sharedContext = `
 SPEAKER PROFILE:
 - A Korean couple, late 20s–early 30s, on a short Osaka trip together.
-- They're talking with a local Japanese peer in their 20s–30s (MZ generation).
-- Friendly, modern, respectful. Never creepy, pushy, or sleazy.
-- They want replies that sound like an actual native young person — not
-  textbook keigo, not anime cosplay.
+- The line they just heard usually comes from restaurant staff, a shop clerk,
+  station staff, a driver, or a friendly local.
+- Friendly, modern, respectful. They want replies that sound like an actual
+  native speaker today — not textbook keigo, not anime cosplay.
 
 HARD RULES:
-- No sexual / explicit / coercive content. If the other line invites a creepy
+- No sexual / explicit / coercive content. If the heard line invites a creepy
   reply, refuse and offer a respectful equivalent. Flag in "angle".
 - Preserve names/places/brands verbatim.
 - Spoken length only. No essays.
@@ -39,29 +40,30 @@ HARD RULES:
 `.trim();
 
 const toneInstruction: Record<TonePreset, string> = {
-  polite: "Clean です/ます. Good when the other party used 敬語 or you don't know them well yet.",
-  casual: "Friendly タメ口 with light です/ます softeners. Peer-level, already warmed up.",
+  polite: "Clean です/ます. Default when replying to staff or strangers.",
+  casual:
+    "Friendly peer-level reply to a local/owner who's being chatty. です/ます base " +
+    "with natural softeners. Warm, inclusive of both partners.",
   urgent: "Polite but urgent. Lead with the ask. Stranger-actionable.",
-  icebreaker:
-    "Light, warm, not pickup-y. Small observation or casual follow-up. " +
-    "Mostly タメ口 with 〜ね/〜かな.",
-  "flirt-soft":
-    "Warm, indirect interest — compliment, curiosity, shared-vibe comment. MZ casual, " +
-    "leaves space for them to engage further or not.",
-  "flirt-bold":
-    "Direct expression of interest, classy & self-aware. Confident MZ tone. Short, light, never aggressive.",
-  barhop:
-    "Izakaya/bar energy. Casual タメ口 with current MZ slang where natural " +
-    "(やばい, 〜じゃん, 神, エモい, 飲も〜).",
-  afterparty:
-    "Inviting/agreeing to the next spot. 行こうよ〜/いいね register. No pressure.",
-  playful:
-    "Teasing banter between people clicking. 〜w / 笑 OK. Self-deprecating ok. " +
-    "Funny > cool.",
-  apology: "Sincere, not heavy. Acknowledge, offer to fix, short.",
-  compliment:
-    "Specific, grounded compliment. Anchor to something they chose (outfit, taste, " +
-    "the spot they picked). Not body."
+  order:
+    "Replying to a server: confirm/decline/ask back about menu, portions, allergy. " +
+    "Counters and quantities unambiguous (二つ, 二人前).",
+  request:
+    "Replying while asking a favor: photo, takeout, seats. 〜してもらえますか with " +
+    "すみません cushioning. Easy to grant or decline.",
+  shopping:
+    "Replying to a clerk: size/color/stock/tax-free/gift-wrap. Short clear answers " +
+    "(それでお願いします / ちょっと考えます).",
+  transit:
+    "Replying to station staff/passerby directions: confirm understanding, repeat key " +
+    "facts back (〜番線ですね), ask one clarifying question max.",
+  booking:
+    "Replying about a reservation/waitlist: confirm name/time/party size, accept or " +
+    "negotiate alternatives clearly.",
+  thanks:
+    "Grateful replies: ごちそうさまでした, 助かりました. Genuine, short, optionally one " +
+    "specific detail.",
+  apology: "Sincere, not heavy. Acknowledge, offer to fix, short."
 };
 
 export function buildReplySystemPrompt(req: ReplyRequest): string {
@@ -73,9 +75,8 @@ export function buildReplySystemPrompt(req: ReplyRequest): string {
 TASK:
 1) Translate the heard Japanese line into natural Korean ("heardMeaning"). Spoken length.
 2) Suggest 3–4 short Japanese REPLIES in the requested tone, each from a
-   DIFFERENT angle (e.g., empathize + ask back, playful tease, share an
-   experience, redirect, agree + propose).
-   NEVER produce two replies that say the same thing — different angles only.
+   DIFFERENT angle (e.g., accept, decline politely, ask a clarifying question,
+   counter-propose). NEVER produce two replies that say the same thing — different angles only.
 
 TONE: ${toneLabel}
 TONE NOTES: ${tone}
@@ -87,7 +88,7 @@ For each suggested reply provide:
 - "hangulReading": Korean Hangul phonetic reading of the JA.
 - "romaji": Hepburn romaji, lowercase, spaces between words.
 - "angle": ONE short line in KOREAN (≤ 30 chars) explaining the STRATEGY,
-  not the meaning. Examples: "공감하고 되묻기 / 농담으로 받기 / 화제 전환 / 칭찬으로 받기".
+  not the meaning. Examples: "수락하기 / 정중히 거절 / 조건 확인 후 결정 / 대안 제시".
 
 OUTPUT FORMAT — return STRICT JSON, no markdown fences, no commentary:
 {

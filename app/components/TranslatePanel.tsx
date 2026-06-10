@@ -50,7 +50,7 @@ type PhotoResult = PhotoTranslateResponse & { message?: string };
 type Pair = { src: LangCode; tgt: LangCode };
 
 const langLabel: Record<LangCode, string> = { ko: "한국어", ja: "日本語" };
-const storageKey = "yj-osaka-translate-v3";
+const storageKey = "yj-osaka-translate-v4";
 
 const modeMeta: Record<Mode, { icon: React.ReactNode; label: string }> = {
   translate: { icon: <ArrowLeftRight size={13} />, label: "번역" },
@@ -71,7 +71,7 @@ type Persisted = {
 
 function loadPersisted(): Persisted {
   if (typeof window === "undefined") {
-    return { pair: { src: "ko", tgt: "ja" }, tone: "icebreaker", context: "", mode: "translate" };
+    return { pair: { src: "ko", tgt: "ja" }, tone: "order", context: "", mode: "translate" };
   }
   try {
     const raw = window.localStorage.getItem(storageKey);
@@ -83,12 +83,12 @@ function loadPersisted(): Persisted {
         parsed.pair && (parsed.pair.src === "ko" || parsed.pair.src === "ja") && (parsed.pair.tgt === "ko" || parsed.pair.tgt === "ja")
           ? parsed.pair
           : { src: "ko", tgt: "ja" },
-      tone: parsed.tone && parsed.tone in toneMeta ? parsed.tone : "icebreaker",
+      tone: parsed.tone && parsed.tone in toneMeta ? parsed.tone : "order",
       context: typeof parsed.context === "string" ? parsed.context : "",
       mode: validMode
     };
   } catch {
-    return { pair: { src: "ko", tgt: "ja" }, tone: "icebreaker", context: "", mode: "translate" };
+    return { pair: { src: "ko", tgt: "ja" }, tone: "order", context: "", mode: "translate" };
   }
 }
 
@@ -109,7 +109,7 @@ export function TranslatePanel({ open, onClose }: Props) {
   const favorites = useFavorites();
   const [mode, setMode] = useState<Mode>("translate");
   const [pair, setPair] = useState<Pair>({ src: "ko", tgt: "ja" });
-  const [tone, setTone] = useState<TonePreset>("icebreaker");
+  const [tone, setTone] = useState<TonePreset>("order");
   const [context, setContext] = useState("");
   const [text, setText] = useState("");
   const [translateResult, setTranslateResult] = useState<TranslateResult | null>(null);
@@ -441,9 +441,9 @@ export function TranslatePanel({ open, onClose }: Props) {
         ? "여기에 한국어를 적거나 🎙️을 눌러 말하세요"
         : "여기에 일본어를 입력하거나 🎙️을 눌러 말하세요"
       : mode === "suggest"
-      ? "어떤 상황인지 자세히 적어주세요\n예: 우라난바 이자카야에서 일행과 합석함. 사진 얘기로 분위기 좋음. 자연스럽게 대화 이어가고 싶음"
+      ? "어떤 상황인지 자세히 적어주세요\n예: 쿠시카츠 가게 만석. 웨이팅이 얼마나인지 묻고, 너무 길면 포장 되는지도 물어보고 싶음"
       : mode === "reply"
-      ? "들은 일본어를 적거나 🎙️을 눌러 상대가 말할 때 녹음하세요\n예: もう一軒行きませんか?"
+      ? "들은 일본어를 적거나 🎙️을 눌러 상대가 말할 때 녹음하세요\n예: ご注文はお決まりですか？"
       : "";
 
   const submitLabel =
@@ -606,7 +606,7 @@ export function TranslatePanel({ open, onClose }: Props) {
                 <input
                   value={context}
                   onChange={(event) => setContext(event.target.value)}
-                  placeholder="예: 우라난바 이자카야, 방금 합석함, 사진 얘기 중"
+                  placeholder="예: 미즈노 웨이팅 줄, 둘이서, 카운터석도 괜찮음"
                   maxLength={240}
                 />
               </details>

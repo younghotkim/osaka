@@ -1,23 +1,22 @@
-// Domain types & prompt builder for the Claude Haiku-backed translator.
-// Designed for a Korean ↔ Japanese travel/회화 use case — two Korean friends
-// on a short Osaka trip, mingling with local company their own age.
+// Domain types & prompt builder for the translator.
+// Designed for a Korean ↔ Japanese travel/회화 use case — a Korean couple
+// on a short Osaka trip, mostly talking to staff, drivers, and friendly locals.
 
 export type LangCode = "ko" | "ja";
 
 export type TonePreset =
   // baseline
-  | "polite"        // 정중한 존댓말 — 가게 직원, 처음 보는 사람
-  | "casual"        // 친근한 반말+타메구치 섞임 — 친해진 뒤
-  | "urgent"        // 다급/도움 요청 — 길 잃음, 아픔, 분실
-  // 현지 일행과의 시나리오 (MZ-leaning)
-  | "icebreaker"    // 첫 인사·말걸기 — 가볍고 부담 없게, 살짝 위트
-  | "flirt-soft"    // 부드러운 친근감 — 들이대지 않는 선, 칭찬 위주
-  | "flirt-bold"    // 솔직한 표현 — 의사 표현은 분명히, 매너 유지
-  | "barhop"        // 술자리·이자카야 — 텐션 있게, MZ 슬랭 ok
-  | "afterparty"    // 다음 장소 제안 — 권유 톤, 강요X
-  | "playful"       // 장난스러운 농담 — 분위기 풀 때
-  | "apology"       // 사과·수습 — 진지함 + 가벼움 조절
-  | "compliment";   // 칭찬 — 스타일·취향 부담스럽지 않게
+  | "polite"    // 기본 존댓말 — 어디서든 안전
+  | "casual"    // 스몰토크 — 옆자리·주인장과 가벼운 대화
+  | "urgent"    // 다급/도움 요청 — 길 잃음, 아픔, 분실
+  // 커플 여행 실전 시나리오
+  | "order"     // 식당·카페 주문 — 추천, 추가, 알레르기
+  | "request"   // 부탁·요청 — 사진, 포장, 자리
+  | "shopping"  // 쇼핑 — 사이즈, 색상, 면세
+  | "transit"   // 길·교통 — 역, 출구, 막차
+  | "booking"   // 예약·웨이팅 — 확인, 변경, 대기
+  | "thanks"    // 감사·칭찬 — 잘 먹었습니다, 친절 감사
+  | "apology";  // 사과·양해 — 실수 수습
 
 export type Direction = `${LangCode}->${LangCode}`;
 
@@ -42,71 +41,65 @@ export type TranslateResponse = {
 };
 
 export const toneMeta: Record<TonePreset, { label: string; hint: string; emoji: string }> = {
-  polite: { label: "정중", hint: "가게 직원·처음 보는 사람", emoji: "🙇" },
-  casual: { label: "친근", hint: "친해진 사이 · 반말 섞임", emoji: "🙂" },
-  urgent: { label: "다급", hint: "길 잃음·아픔·분실", emoji: "🆘" },
-  icebreaker: { label: "말걸기", hint: "첫 인사·자연스럽게", emoji: "👋" },
-  "flirt-soft": { label: "분위기", hint: "부드럽게·친근하게", emoji: "🌸" },
-  "flirt-bold": { label: "솔직히", hint: "솔직한 표현·매너 유지", emoji: "💬" },
-  barhop: { label: "이자카야", hint: "술자리 텐션·MZ 슬랭 ok", emoji: "🍶" },
-  afterparty: { label: "다음일정", hint: "다음 장소·일정 제안", emoji: "🎵" },
-  playful: { label: "장난", hint: "농담·분위기 풀기", emoji: "😜" },
-  apology: { label: "사과", hint: "수습·매너 회복", emoji: "🙏" },
-  compliment: { label: "칭찬", hint: "스타일·취향·센스", emoji: "✨" }
+  order: { label: "주문", hint: "식당·카페 — 추천·추가·알레르기", emoji: "🍜" },
+  request: { label: "부탁", hint: "사진·포장·자리 요청", emoji: "📸" },
+  transit: { label: "길·교통", hint: "역·출구·승강장·막차", emoji: "🚇" },
+  shopping: { label: "쇼핑", hint: "사이즈·색상·면세·계산", emoji: "🛍️" },
+  booking: { label: "예약", hint: "예약 확인·웨이팅·변경", emoji: "📅" },
+  thanks: { label: "감사·칭찬", hint: "잘 먹었습니다·친절 감사", emoji: "✨" },
+  casual: { label: "스몰토크", hint: "옆자리·주인장과 가벼운 대화", emoji: "🙂" },
+  polite: { label: "정중", hint: "기본 존댓말 — 어디서든 안전", emoji: "🙇" },
+  apology: { label: "사과", hint: "실수·양해 구하기", emoji: "🙏" },
+  urgent: { label: "다급", hint: "길 잃음·아픔·분실", emoji: "🆘" }
 };
 
 // Korean example phrases per tone — shown as chips that fill the input on tap.
-// Realistic starting points the user can lightly edit before translating.
+// Realistic couple-trip starting points the user can lightly edit before translating.
 export const toneExamples: Record<TonePreset, string[]> = {
-  icebreaker: [
-    "여기 분위기 좋네요",
-    "이 가게 어떻게 알게 됐어요?",
-    "혹시 오사카 자주 오세요?"
+  order: [
+    "추천 메뉴가 뭐예요?",
+    "둘이서 나눠 먹기 좋은 걸로 부탁드려요",
+    "새우 알레르기가 있어요, 빼주실 수 있나요?"
   ],
-  compliment: [
-    "스타일이 진짜 좋으시네요",
-    "센스가 남다르세요",
-    "그 가방 어디 거예요?"
+  request: [
+    "사진 한 장 찍어주시겠어요? 간판까지 나오게요",
+    "이거 포장 되나요?",
+    "창가 자리로 앉을 수 있을까요?"
   ],
-  "flirt-soft": [
-    "오늘 같이 시간 보내서 즐거웠어요",
-    "다음에 또 같이 가고 싶어요",
-    "분위기가 잘 맞으시네요"
+  transit: [
+    "난바역까지 어떻게 가요?",
+    "이 전철 우메다 가나요?",
+    "막차가 몇 시예요?"
   ],
-  "flirt-bold": [
-    "연락처 여쭤봐도 될까요?",
-    "솔직히 만나서 정말 반가웠어요",
-    "다음에 또 봐요"
+  shopping: [
+    "이거 다른 색도 있나요?",
+    "면세 되나요? 여권 여기 있어요",
+    "선물 포장 가능한가요?"
   ],
-  playful: [
-    "그렇게 잘 웃으시면 분위기 살죠",
-    "한국에선 몰랐는데 여기 분위기 너무 좋네요",
-    "그래서 결론은 한 잔 더?"
+  booking: [
+    "7시에 두 명 예약했어요",
+    "지금 가면 얼마나 기다려요?",
+    "예약을 30분 늦출 수 있을까요?"
   ],
-  barhop: [
-    "건배! 오늘 진짜 좋다",
-    "이 술 처음 마셔봐요, 추천 좀",
-    "안주 뭐가 맛있어요?"
-  ],
-  afterparty: [
-    "2차 가실래요?",
-    "근처에 라멘 맛집 알아요, 같이 가요",
-    "노래방 콜?"
+  thanks: [
+    "진짜 맛있었어요, 잘 먹었습니다",
+    "친절하게 알려주셔서 감사해요",
+    "덕분에 좋은 추억 만들었어요"
   ],
   casual: [
-    "오늘 진짜 즐거웠어",
-    "내일 뭐 해?",
-    "사진 한 장 같이 찍어도 돼?"
+    "여기 단골이세요? 뭐가 제일 맛있어요?",
+    "저희 한국에서 여행 왔어요",
+    "이 동네 숨은 맛집 있으면 알려주세요"
   ],
   polite: [
-    "주문 하나 더 부탁드려요",
-    "화장실 어디 있어요?",
-    "계산 부탁드립니다"
+    "잘 부탁드립니다",
+    "조금 천천히 말씀해 주시겠어요?",
+    "한국어 메뉴 있나요?"
   ],
   apology: [
-    "방금 그건 미안해요",
-    "취해서 실수했어요, 죄송",
-    "오해 풀고 싶어요"
+    "죄송해요, 일본어를 잘 못해요",
+    "늦어서 죄송합니다",
+    "실수로 떨어뜨렸어요, 죄송해요"
   ],
   urgent: [
     "지갑을 잃어버렸어요",
@@ -115,15 +108,14 @@ export const toneExamples: Record<TonePreset, string[]> = {
   ]
 };
 
-// Ordered for UI display (most situational first for the FAB context).
+// Ordered for UI display (most-used travel situations first).
 export const toneOrder: TonePreset[] = [
-  "icebreaker",
-  "compliment",
-  "flirt-soft",
-  "flirt-bold",
-  "playful",
-  "barhop",
-  "afterparty",
+  "order",
+  "request",
+  "transit",
+  "shopping",
+  "booking",
+  "thanks",
   "casual",
   "polite",
   "apology",
@@ -144,12 +136,11 @@ export function isTone(value: unknown): value is TonePreset {
 
 const sharedContext = `
 SPEAKER PROFILE:
-- A Korean couple in their late 20s–early 30s, on a short Osaka trip together (July 2026).
-- They're mingling with local Japanese company roughly the same age (20s–30s, MZ generation).
-- Friendly, respectful, modern. Never creepy, pushy, or sleazy.
-- Casual MZ-style speakers in Korean. They want the Japanese to sound natural, current,
-  age-appropriate — not textbook-stiff, not anime-cringe, not overly old-fashioned keigo unless
-  the situation calls for it.
+- A Korean couple in their late 20s–early 30s, traveling Osaka together (July 2026).
+- They mostly talk to restaurant staff, shop clerks, station staff, drivers, and
+  occasionally friendly locals. Always as a pair ("둘이서/two of us" comes up a lot).
+- Friendly, respectful, modern. They want Japanese that sounds natural and current —
+  not textbook-stiff, not anime-cringe, not overly heavy keigo unless the situation calls for it.
 
 HARD RULES:
 - Never produce sexually explicit, coercive, or harassing content. If the user's input crosses
@@ -161,45 +152,40 @@ HARD RULES:
 
 const toneInstruction: Record<TonePreset, string> = {
   polite:
-    "Use clean 丁寧語 (です/ます). Safe for talking to staff, taxi drivers, hotel front desk. " +
+    "Use clean 丁寧語 (です/ます). Safe for staff, taxi drivers, hotel front desk, strangers. " +
     "Don't be overly formal (no 申し上げます-level keigo unless asked).",
   casual:
-    "Use friendly タメ口-leaning だ/である form mixed with light です/ます softeners as natural " +
-    "between same-age peers who've warmed up. Avoid stiffness; allow 〜じゃん, 〜よね, 〜かも.",
+    "Friendly small talk with a shop owner, bartender, or seat neighbor. です/ます base with " +
+    "natural softeners (〜ね, 〜んですよ). Warm and curious, never nosy. They are a couple " +
+    "chatting together with a local — keep it inclusive of both.",
   urgent:
     "Convey urgency clearly but stay polite (です/ます). Be brief, direct, easy for a stranger " +
     "to act on. Include the core ask first.",
-  icebreaker:
-    "First-contact line in a bar/cafe/club/street. Light, warm, not pickup-y. A gentle opener " +
-    "a 20s–30s local would find natural — maybe a small situational observation or " +
-    "a casual question. Mostly タメ口 with soft sentence-end particles (〜ね, 〜かな). " +
-    "Avoid pickup-line cringe.",
-  "flirt-soft":
-    "Express warm interest indirectly — through a compliment, curiosity, or a shared-vibe comment. " +
-    "Think MZ Japanese social tone: casual, slightly playful, leaving space for them to engage " +
-    "or not. No physical descriptors beyond face/style/aura. Never pushy. " +
-    "End with something open-ended, not a demand.",
-  "flirt-bold":
-    "More direct expression of interest, but still classy and self-aware. A confident MZ tone that " +
-    "owns the intent (e.g., 連絡先聞いてもいい?, また会いたい). Keep it short, light, never aggressive. " +
-    "If the Korean input is too forward, soften it and note the adjustment.",
-  barhop:
-    "Izakaya/bar energy. Casual タメ口 with current MZ slang where natural " +
-    "(やばい, 〜じゃん, 神, エモい, テンション上がる, 飲も〜). Suitable for toasting, " +
-    "ordering rounds, hyping up the group. Keep it inclusive, not boisterous-rude.",
-  afterparty:
-    "Suggesting a next spot (2차/3차) — karaoke, ramen, another bar, late cafe. Phrase as an " +
-    "invitation she can decline gracefully. 行かない?/行こうよ〜 register. Never pressure.",
-  playful:
-    "Teasing/joking tone between people who are clicking. Light banter, self-deprecating ok. " +
-    "MZ casual with 〜w / 笑 acceptable in writing. Funny > cool. Never punching at her expense.",
+  order:
+    "Restaurant/cafe ordering register. Concise phrasing a server expects: 〜をください, " +
+    "〜でお願いします, おすすめは何ですか. Use natural counters (一つ/二つ/二人前/二名). " +
+    "Allergy or dietary asks must be unambiguous and explicit — safety over brevity.",
+  request:
+    "Polite request forms: 〜してもらえますか / 〜お願いできますか, cushioned with すみません. " +
+    "Typical asks: taking a photo of the couple, takeout/packaging, seat preference, " +
+    "luggage storage. Make the ask easy to grant or decline.",
+  shopping:
+    "Shop register. Short clear questions about size, color, stock, price, tax-free, " +
+    "gift wrapping (免税できますか, 別のサイズありますか, プレゼント用ですか). です/ます.",
+  transit:
+    "Asking station staff or passersby for directions. Lead with the destination " +
+    "(〜に行きたいんですが), then the question. Phrase so a yes/no or pointed answer works. " +
+    "Cover platforms, exits, transfers, last train.",
+  booking:
+    "Reservation/waitlist vocabulary: 予約しています, 二名です, 何分待ちですか, " +
+    "時間を変更できますか. State numbers, names, and times unambiguously. です/ます.",
+  thanks:
+    "Warm gratitude or a grounded compliment to staff/locals: ごちそうさまでした, " +
+    "とても美味しかったです, 親切にありがとうございます. Genuine and short — " +
+    "1 sentence, optionally one specific detail (the dish, the tip they gave).",
   apology:
     "Sincere but not heavy. Acknowledge the slip, offer to make it right, keep it short. " +
-    "ごめん/すみません level depending on how casual the situation already is.",
-  compliment:
-    "Specific, grounded compliment — style, taste, vibe, laugh, the way they chose this spot. " +
-    "Avoid generic 'kawaii'. Keep it 1 sentence, MZ-natural. If complimenting appearance, " +
-    "anchor it to something they chose (outfit, hair color), not their body."
+    "ごめんなさい/すみません level depending on severity. Include 日本語が苦手で… when relevant."
 };
 
 export function buildSystemPrompt(req: TranslateRequest): string {

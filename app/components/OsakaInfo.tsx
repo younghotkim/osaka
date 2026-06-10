@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Volume2 } from "lucide-react";
 import { osakaInfoCards, osakaPhrases } from "@/lib/osaka-info";
+import { speak, ttsSupported } from "@/lib/speak";
 
 export function OsakaInfo() {
   const [open, setOpen] = useState(false);
@@ -35,13 +36,22 @@ export function OsakaInfo() {
           ))}
 
           <div className="info-card info-card--phrases">
-            <h4>🗣️ 비상 일본어</h4>
+            <h4>🗣️ 비상 일본어 {ttsSupported() && <small>— 🔊를 누르면 대신 말해줘요</small>}</h4>
             <ul>
               {osakaPhrases.map((p) => (
                 <li key={p.zh}>
                   <span className="info-phrase__ko">{p.ko}</span>
                   <span className="info-phrase__zh">{p.zh}</span>
                   <span className="info-phrase__pinyin">{p.pinyin}</span>
+                  {ttsSupported() && (
+                    <button
+                      className="info-phrase__speak"
+                      aria-label={`"${p.ko}" 일본어로 듣기`}
+                      onClick={() => void speak(p.zh, "ja")}
+                    >
+                      <Volume2 size={13} />
+                    </button>
+                  )}
                 </li>
               ))}
             </ul>

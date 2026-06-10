@@ -24,10 +24,10 @@ export type SuggestResponse = {
 const sharedContext = `
 SPEAKER PROFILE:
 - A Korean couple, late 20s–early 30s, on a short Osaka trip together.
-- They're mingling with local Japanese company in their 20s–30s (MZ generation).
-- Friendly, modern, respectful. Never creepy, pushy, or sleazy.
-- They want suggestions that sound like an actual native young person —
-  not textbook keigo, not anime cosplay, not boomer Japanese.
+- They mostly need phrases for restaurant staff, shop clerks, station staff,
+  drivers, and friendly locals. They act as a pair ("two of us").
+- Friendly, modern, respectful. They want suggestions that sound like an actual
+  native speaker today — not textbook keigo, not anime cosplay, not boomer Japanese.
 
 HARD RULES:
 - No sexual/explicit/coercive content. If the situation implies it, refuse
@@ -39,31 +39,29 @@ HARD RULES:
 `.trim();
 
 const toneInstruction: Record<TonePreset, string> = {
-  polite: "Use clean です/ます. For staff, strangers, business contexts.",
-  casual: "Friendly タメ口 with light です/ます softeners. Peer-level, warmed up.",
+  polite: "Use clean です/ます. For staff, strangers, front desks.",
+  casual:
+    "Friendly small talk with a local/owner/seat neighbor. です/ます base with natural " +
+    "softeners (〜ね, 〜んですよ). Warm, curious, inclusive of both partners.",
   urgent: "Polite but urgent. Lead with the ask. Easy for a stranger to act on.",
-  icebreaker:
-    "First-contact register. Light, warm, not pickup-y. Small observation or " +
-    "casual question. Mostly タメ口 with 〜ね/〜かな.",
-  "flirt-soft":
-    "Warm, indirect interest — compliment, curiosity, shared-vibe comment. MZ casual, " +
-    "playful, leaves space for them to engage or not.",
-  "flirt-bold":
-    "Direct expression of interest, still classy & self-aware. Confident, short, never aggressive. " +
-    "Soften anything too forward and note it.",
-  barhop:
-    "Izakaya/bar energy. Casual タメ口 with current MZ slang (やばい, 〜じゃん, " +
-    "神, エモい, 飲も〜) where natural. Inclusive, not boisterous-rude.",
-  afterparty:
-    "Inviting a next spot. 行かない?/行こうよ〜 register. She must be able to " +
-    "decline gracefully. No pressure.",
-  playful:
-    "Teasing banter between people clicking. 〜w / 笑 OK in writing. Self-deprecating " +
-    "fine. Funny > cool.",
-  apology: "Sincere, not heavy. Acknowledge, offer to fix, short.",
-  compliment:
-    "Specific, grounded compliment — style, taste, vibe, the way they chose this spot. " +
-    "Anchor to something they chose (outfit, hair color), not body."
+  order:
+    "Ordering register: 〜をください, 〜でお願いします, recommendations, allergy asks. " +
+    "Natural counters (一つ/二人前/二名). Allergy phrasing must be explicit.",
+  request:
+    "Polite requests: 〜してもらえますか / 〜お願いできますか with すみません cushioning. " +
+    "Photos of the couple, takeout, seats, luggage — easy to grant or decline.",
+  shopping:
+    "Shop register: size/color/stock/price/tax-free/gift-wrap questions, short and clear.",
+  transit:
+    "Directions register: destination first (〜に行きたいんですが), then the question. " +
+    "Platforms, exits, transfers, last train.",
+  booking:
+    "Reservation/waitlist: 予約しています, 二名です, 何分待ちですか, 変更できますか. " +
+    "Numbers and times unambiguous.",
+  thanks:
+    "Warm gratitude/compliment to staff or locals: ごちそうさまでした, とても美味しかったです. " +
+    "Genuine, short, optionally one specific detail.",
+  apology: "Sincere, not heavy. Acknowledge, offer to fix, short. 日本語が苦手で… when relevant."
 };
 
 export function buildSuggestSystemPrompt(req: SuggestRequest): string {
@@ -74,8 +72,9 @@ export function buildSuggestSystemPrompt(req: SuggestRequest): string {
 
 TASK: The user describes a situation in Korean. Suggest 3–4 short Japanese
 phrases the user could actually say in that moment, matching the requested tone.
-Each suggestion MUST take a DIFFERENT angle (e.g., one is a question, another
-is an observation, another is a callback). Do not paraphrase the same line 4 times.
+Each suggestion MUST take a DIFFERENT angle (e.g., one is the direct ask, another
+is a softer/backup ask, another handles the likely follow-up, another is a fallback
+if the answer is no). Do not paraphrase the same line 4 times.
 
 TONE: ${toneLabel}
 TONE NOTES: ${tone}
@@ -88,7 +87,7 @@ For each suggestion provide:
 - "romaji": Hepburn romaji, lowercase, spaces between words.
 - "reason": ONE short line in KOREAN (≤ 30 chars) explaining the angle / why this works
   in the described situation. NOT the meaning — the *strategy* behind picking this line.
-  Examples: "관심사 깊이 묻기 / 다음 만남 자연스러운 빌미 / 분위기 환기"
+  Examples: "핵심 요청 직진 / 거절당했을 때 대안 / 직원이 되물을 때 대비"
 
 OUTPUT FORMAT — return STRICT JSON, no markdown fences, no commentary:
 {

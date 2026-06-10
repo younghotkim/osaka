@@ -19,6 +19,7 @@ import {
   Loader2,
   Luggage,
   Map as MapIcon,
+  MapPin,
   Navigation,
   Paperclip,
   Pencil,
@@ -962,25 +963,37 @@ function PlanShell({
                           <strong>{tripDays.find((d) => d.day === stop.day)?.date ?? ""}</strong>
                         </div>
                       )}
-                      <button
-                        className={activeStop.id === stop.id ? "stop-row stop-row--active" : "stop-row"}
-                        onClick={() => onOpenInMemories(stop)}
+                      <div
+                        className={activeStop.id === stop.id ? "stop-row stop-row--list stop-row--active" : "stop-row stop-row--list"}
                       >
-                        <span className="stop-row__time">{stop.time}</span>
-                        <span className="stop-row__main">
-                          <strong>{stop.title}</strong>
-                          <small>
-                            {priorityLabels[plan.priority]} · {plan.durationMinutes}분 · {statusLabels[memory.status]}
-                            {plan.openingHours && ` · ${plan.openingHours}`}
-                            {plan.bookingStatus && ` · ${plan.bookingStatus}`}
-                            {plan.riskLevel && plan.riskLevel !== "low" && ` · ${plan.riskLevel === "high" ? "리스크 높음" : "주의"}`}
-                            {memory.comments.length > 0 && ` · 💬${memory.comments.length}`}
-                          </small>
-                        </span>
+                        <button className="stop-row__open" onClick={() => onOpenInMemories(stop)}>
+                          <span className="stop-row__time">{stop.time}</span>
+                          <span className="stop-row__main">
+                            <strong>{stop.title}</strong>
+                            <small>
+                              {priorityLabels[plan.priority]} · {plan.durationMinutes}분 · {statusLabels[memory.status]}
+                              {plan.openingHours && ` · ${plan.openingHours}`}
+                              {plan.bookingStatus && ` · ${plan.bookingStatus}`}
+                              {plan.riskLevel && plan.riskLevel !== "low" && ` · ${plan.riskLevel === "high" ? "리스크 높음" : "주의"}`}
+                              {memory.comments.length > 0 && ` · 💬${memory.comments.length}`}
+                            </small>
+                          </span>
+                        </button>
+                        <button
+                          className="stop-row__map-jump"
+                          title="지도에서 보기"
+                          aria-label={`${stop.title} 지도에서 보기`}
+                          onClick={() => {
+                            onSelectStop(stop);
+                            onPlanViewChange("map");
+                          }}
+                        >
+                          <MapPin size={14} />
+                        </button>
                         <span className="stop-row__status" style={{ ["--cat" as string]: categoryColors[stop.category] }}>
                           {memory.status === "done" ? <Check size={14} /> : categoryIcon(stop.category, 14)}
                         </span>
-                      </button>
+                      </div>
                     </div>
                   );
                 })}
