@@ -1389,8 +1389,13 @@ a {
       rgba(255, 247, 245, 0.97);
     padding: 7px;
     box-shadow:
-      0 -2px 24px rgba(0, 0, 0, 0.5),
+      0 -4px 22px rgba(60, 25, 45, 0.22),
       inset 0 1px 0 rgba(60, 25, 45, 0.08);
+  }
+
+  /* fixed bottom nav: keep page content & map overlays from hiding behind it */
+  .app-shell {
+    padding-bottom: calc(92px + env(safe-area-inset-bottom));
   }
 
   .nav-button {
@@ -1467,6 +1472,14 @@ a {
   .stop-row {
     grid-template-columns: 52px minmax(0, 1fr) 32px;
     padding: 12px;
+  }
+
+  .stop-row--list {
+    grid-template-columns: minmax(0, 1fr) 28px 32px;
+  }
+
+  .stop-row--list .stop-row__open {
+    grid-template-columns: 52px minmax(0, 1fr);
   }
 
   /* edit mode: 2-line row so the title is readable and the controls are tappable */
@@ -7854,6 +7867,78 @@ a {
   50% { box-shadow: var(--shadow), inset 0 1px 0 rgba(60, 25, 45, 0.08), 0 0 52px rgba(212, 53, 108, 0.4); }
 }
 
+.departure__corner {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 6px;
+}
+
+.departure__corner .departure__dismiss {
+  position: static;
+}
+
+/* collapsed one-liner: D-n · date · readiness % + progress bar */
+.departure--collapsed {
+  padding: 0;
+}
+
+.departure__summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 14px;
+  border: 0;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+}
+
+.departure__summary-d {
+  font-family: "Shippori Mincho", "Noto Serif JP", serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--neon-pink);
+  letter-spacing: 0.01em;
+}
+
+.departure__summary-date {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.departure__summary-pct {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.departure__summary-bar {
+  flex: 1;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(60, 25, 45, 0.08);
+  overflow: hidden;
+}
+
+.departure__summary-bar i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--neon-pink), var(--neon-gold));
+}
+
+.departure__summary svg {
+  color: var(--muted-dim);
+  flex-shrink: 0;
+}
+
 .departure__dismiss {
   position: absolute;
   top: 10px;
@@ -8234,7 +8319,8 @@ a {
 @media (max-width: 480px) {
   .translate-fab {
     right: 12px;
-    bottom: 14px;
+    /* sit above the fixed bottom nav instead of covering its last button */
+    bottom: calc(86px + env(safe-area-inset-bottom));
     padding: 11px 14px;
     font-size: 12px;
   }

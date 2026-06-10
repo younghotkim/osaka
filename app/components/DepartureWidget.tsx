@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import {
   BookOpen,
   Check,
+  ChevronDown,
+  ChevronUp,
   Clock,
   ExternalLink,
   Hotel,
@@ -18,6 +20,7 @@ import type { VaultItem } from "@/lib/trip-vault";
 import { daysUntilExpiry, type Traveler, type TravelerBook } from "@/lib/travelers";
 
 const dismissKey = "yj-osaka-departure-dismissed-v1";
+const collapseKey = "yj-osaka-departure-collapsed-v1";
 const vjwKey = "yj-osaka-vjw-done-v1";
 const VJW_URL = "https://vjw-lp.digital.go.jp/ja/";
 
@@ -61,12 +64,15 @@ export function DepartureWidget({
   onJump: (mode: Mode) => void;
 }) {
   const [dismissed, setDismissed] = useState(false);
+  // Collapsed by default so the itinerary, not the checklist, owns the first screen.
+  const [collapsed, setCollapsed] = useState(true);
   const [vjw, setVjw] = useState<VjwState>({ youngha: false, sohyun: false });
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     const stored = window.localStorage.getItem(dismissKey);
     if (stored === startIso) setDismissed(true);
+    if (window.localStorage.getItem(collapseKey) === "no") setCollapsed(false);
     const vjwStored = window.localStorage.getItem(vjwKey);
     if (vjwStored) {
       try {
@@ -232,17 +238,60 @@ export function DepartureWidget({
   const tone: "imminent" | "soon" | "later" =
     dDays === 0 ? "imminent" : dDays <= 3 ? "soon" : "later";
 
+  const toggleCollapsed = () => {
+    setCollapsed((current) => {
+      const next = !current;
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem(collapseKey, next ? "yes" : "no");
+      }
+      return next;
+    });
+  };
+
+  if (collapsed) {
+    return (
+      <section className={`departure departure--${tone} departure--collapsed`} aria-label="출발 카운트다운">
+        <button
+          type="button"
+          className="departure__summary"
+          onClick={toggleCollapsed}
+          aria-expanded={false}
+          title="준비 체크리스트 펼치기"
+        >
+          <strong className="departure__summary-d">{dDays === 0 ? "D-Day" : `D-${dDays}`}</strong>
+          <span className="departure__summary-date">{startIso} 출발</span>
+          <span className="departure__summary-pct">준비 {overallPct}%</span>
+          <span className="departure__summary-bar" aria-hidden="true">
+            <i style={{ width: `${overallPct}%` }} />
+          </span>
+          <ChevronDown size={15} aria-hidden="true" />
+        </button>
+      </section>
+    );
+  }
+
   return (
     <section className={`departure departure--${tone}`} aria-label="출발 카운트다운">
-      <button
-        type="button"
-        className="departure__dismiss"
-        onClick={dismiss}
-        aria-label="이 안내 숨기기"
-        title="이번 여행 동안 숨기기"
-      >
-        <X size={14} />
-      </button>
+      <span className="departure__corner">
+        <button
+          type="button"
+          className="departure__dismiss"
+          onClick={toggleCollapsed}
+          aria-label="접기"
+          title="한 줄로 접기"
+        >
+          <ChevronUp size={14} />
+        </button>
+        <button
+          type="button"
+          className="departure__dismiss"
+          onClick={dismiss}
+          aria-label="이 안내 숨기기"
+          title="이번 여행 동안 숨기기"
+        >
+          <X size={14} />
+        </button>
+      </span>
       <div className="departure__head">
         <div className="departure__count">
           <span className="departure__count-label">출발까지</span>
