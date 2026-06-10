@@ -67,10 +67,10 @@ export const tripDays: TripDay[] = [
   {
     day: 2,
     date: "7/3 금",
-    title: "오사카성 → 우메다 → 공중정원 선셋",
-    mood: "낮엔 성과 정원, 밤엔 하늘 위에서 — 가장 로맨틱한 하루",
+    title: "텐진바시 먹방 → 우메다 → 공중정원 선셋",
+    mood: "낮엔 상점가 먹방, 밤엔 하늘 위에서 — 먹고 마시는 로맨틱 풀데이",
     summary:
-      "모닝 스페셜티 커피 → 오사카성 천수각·니시노마루 정원 → 키지 오코노미야키 점심 → 우메다·차야마치 쇼핑 → 헵파이브 빨간 관람차 → 타키미코지 저녁 → 우메다 스카이빌딩 공중정원 일몰·야경.",
+      "모닝 스페셜티 커피 → 텐진바시스지 상점가 먹방 산책 → 키지 모단야키 점심 → 한큐 디파치카 먹거리 탐방 → 헵파이브 빨간 관람차 → 타키미코지 저녁 → 공중정원 일몰·야경 → 텐마 다찌노미 한잔.",
     journal: ""
   },
   {
@@ -182,12 +182,36 @@ export const tripStops: TripStop[] = [
     mapsQuery: "Mizuno Okonomiyaki Dotonbori"
   },
   {
+    id: "takoyaki-dotonbori",
+    day: 1,
+    date: "7/2 목",
+    time: "19:40",
+    title: "도톤보리 타코야키 — 한 손 들고 강변",
+    subtitle: "쿠쿠루 vs 와나카 vs 아이즈야 — 본고장 첫 타코야키",
+    nameZh: "たこ焼き くくる / わなか / 会津屋",
+    mrt: "도톤보리 거리 — 미즈노에서 도보 2분",
+    phrase: "ソースとマヨネーズ抜きでもできますか？",
+    phrasePron: "sōsu to mayonēzu nuki demo dekimasu ka?",
+    phraseHint: "소스·마요 빼고도 되나요? (원조 아이즈야 스타일)",
+    category: "food",
+    lat: 34.6688,
+    lng: 135.5021,
+    highlights: [
+      "저녁 직후니 한 팩(6~8개)을 둘이 나눠서",
+      "쿠쿠루(문어 큼직)·와나카(반죽 폭신)·아이즈야(소스 없는 원조) 취향 픽",
+      "갓 나온 건 속이 용암 — 호호 불어서, 화상 주의",
+      "강변 데크에 앉아서 네온 보며 먹기"
+    ],
+    prompt: "타코야키 가게 어디 골랐는지 + 한입 리액션 영상.",
+    mapsQuery: "Takoyaki Kukuru Dotonbori"
+  },
+  {
     id: "shinsaibashi-amemura",
     day: 1,
     date: "7/2 목",
     time: "17:00",
-    title: "신사이바시스지 + 아메리카무라",
-    subtitle: "아케이드 쇼핑 & 빈티지 골목 산책",
+    title: "신사이바시스지 + 아메리카무라 산책",
+    subtitle: "저녁 전 입맛 돋우기 — 아케이드·골목 구경 (선택)",
     nameZh: "心斎橋筋商店街 · アメリカ村",
     mrt: "신사이바시역(心斎橋駅) 6번 출구 — 아케이드 바로 연결",
     phrase: "試着してもいいですか？",
@@ -198,9 +222,9 @@ export const tripStops: TripStop[] = [
     lng: 135.5010,
     highlights: [
       "신사이바시스지 — 지붕 있는 아케이드라 더위·비 걱정 없음",
-      "아메무라 — 빈티지샵·레코드·삼각공원 골목",
-      "커플 양말/폰케이스 같은 시시한 커플템 하나 사기",
-      "드러그스토어 쇼핑은 마지막 날 말고 오늘 가볍게 정찰만"
+      "아메무라 골목 구경 — 사는 건 없어도 보는 재미",
+      "출출하면 아메무라 명물 아이스도그(튀긴 빵 아이스크림) 반 개씩",
+      "18시 미즈노 줄 서기 역산 — 17:45엔 도톤보리로"
     ],
     prompt: "아메무라에서 제일 이상하고 웃긴 가게 한 컷.",
     mapsQuery: "Shinsaibashi-suji Shopping Street"
@@ -326,12 +350,36 @@ export const tripStops: TripStop[] = [
     mapsQuery: "LiLo Coffee Roasters Osaka"
   },
   {
-    id: "osaka-castle",
+    id: "tenjinbashi-gourmet",
     day: 2,
     date: "7/3 금",
     time: "10:30",
-    title: "오사카성 — 천수각 & 니시노마루 정원",
-    subtitle: "해자 위 천수각, 오사카의 상징",
+    title: "텐진바시스지 상점가 — 먹방 산책",
+    subtitle: "일본에서 제일 긴 상점가(2.6km), 군것질 천국",
+    nameZh: "天神橋筋商店街",
+    mrt: "사카이스지선 혼마치권→오기마치역(扇町駅)·텐진바시스지로쿠초메역 직통",
+    phrase: "一番人気はどれですか？",
+    phrasePron: "ichiban ninki wa dore desu ka?",
+    phraseHint: "제일 인기 있는 게 뭐예요?",
+    category: "food",
+    lat: 34.7049,
+    lng: 135.5113,
+    highlights: [
+      "나카무라야 고로케 — 한 개 ¥100대, 갓 튀긴 걸로",
+      "지붕 덮인 아케이드 — 한여름에도 시원하게 걷기",
+      "단고·센베이·교자 등 사 먹으며 남→북으로 슬슬",
+      "점심 키지 역산해서 배 70%만 채우기"
+    ],
+    prompt: "둘이 고른 군것질 베스트 1 + 가격 합산 (정산).",
+    mapsQuery: "Tenjinbashisuji Shopping Street"
+  },
+  {
+    id: "osaka-castle",
+    day: 2,
+    date: "7/3 금",
+    time: "10:40",
+    title: "오사카성 (후보) — 가벼운 외관 산책",
+    subtitle: "먹방 테마면 패스 OK — 가면 해자+외관만 가볍게",
     nameZh: "大阪城天守閣 · 西の丸庭園",
     mrt: "다니마치욘초메역(谷町四丁目駅) 1-B 출구 도보 15분",
     phrase: "天守閣のチケットを二枚ください。",
@@ -341,10 +389,10 @@ export const tripStops: TripStop[] = [
     lat: 34.6873,
     lng: 135.5262,
     highlights: [
-      "천수각 8F 전망대 — 입장 ¥600 (줄 길면 외관+정원만도 충분)",
-      "니시노마루 정원(¥200) — 해자 건너 천수각 뷰가 베스트 포토스팟",
-      "7월 한낮 더위 주의 — 오전에 끝내고 실내로",
-      "고자부네 뱃놀이(해자 보트)도 후보"
+      "테마는 먹방 — 갈 거면 입장 말고 해자·외관 30분 산책만",
+      "니시노마루 정원(¥200) 해자 건너 뷰가 사진은 최고",
+      "7월 한낮 폭염 — 컨디션 안 좋으면 미련 없이 패스",
+      "텐진바시 먹방이 더 끌리면 그쪽에 시간 몰아주기"
     ],
     prompt: "해자 + 천수각 배경 커플 사진. 더위 체감 한 줄.",
     mapsQuery: "Osaka Castle Nishinomaru Garden"
@@ -378,24 +426,24 @@ export const tripStops: TripStop[] = [
     day: 2,
     date: "7/3 금",
     time: "14:30",
-    title: "우메다 — 그랜드프론트 · 차야마치",
-    subtitle: "백화점 디파치카부터 NU차야마치까지",
-    nameZh: "梅田 グランフロント · 茶屋町 · 阪急うめだ",
+    title: "우메다 — 한큐 디파치카 먹거리 탐방",
+    subtitle: "백화점 지하 식품관 구경 + 디저트 한 입",
+    nameZh: "阪急うめだ本店 デパ地下 · 茶屋町",
     mrt: "우메다역(梅田駅) — 한큐/지하철/JR 오사카역 전부 연결",
-    phrase: "免税カウンターはどこですか？",
-    phrasePron: "menzei kauntā wa doko desu ka?",
-    phraseHint: "면세 카운터 어디예요?",
-    category: "shopping",
-    lat: 34.7037,
-    lng: 135.4960,
+    phrase: "一つだけでも買えますか？",
+    phrasePron: "hitotsu dake demo kaemasu ka?",
+    phraseHint: "하나만 사도 되나요?",
+    category: "food",
+    lat: 34.7026,
+    lng: 135.4985,
     highlights: [
-      "한큐 우메다 본점 디파치카 — 선물 과자(바통도르 등) 사냥",
-      "그랜드프론트·루쿠아 — 한국에 없는 브랜드 위주로",
-      "차야마치 골목 — 잡화·소품샵 데이트 코스",
+      "한큐 우메다 본점 디파치카 — 일본 최고 수준 식품관 구경 자체가 투어",
+      "바통도르·갓 구운 치즈케이크(리쿠로 오지상) 등 디저트 한 입씩",
+      "시식·시음 적극 활용 — 저녁 역산해서 과식 금지",
       "지하미로 길찾기 주의 — 구글맵보다 표지판 따라가기"
     ],
-    prompt: "서로에게 줄 작은 선물 하나씩 몰래 사기 (저녁에 교환).",
-    mapsQuery: "Grand Front Osaka"
+    prompt: "디파치카에서 제일 충격적이었던 음식 한 컷.",
+    mapsQuery: "Hankyu Umeda Main Store"
   },
   {
     id: "hep-five",
@@ -474,24 +522,24 @@ export const tripStops: TripStop[] = [
     day: 2,
     date: "7/3 금",
     time: "21:30",
-    title: "도톤보리 강변 — 밤 산책 + 한 잔",
-    subtitle: "호텔 복귀 후 강변 데크 야경 마무리",
-    nameZh: "とんぼりリバーウォーク",
-    mrt: "난바역(なんば駅) — 호텔 도보권",
-    phrase: "持ち帰りできますか？",
-    phrasePron: "mochikaeri dekimasu ka?",
-    phraseHint: "포장 되나요?",
-    category: "whisky",
-    lat: 34.6692,
-    lng: 135.5005,
+    title: "텐마 — 다찌노미 골목 한잔",
+    subtitle: "로컬 술꾼들의 성지에서 서서 한 잔 (선택)",
+    nameZh: "天満 立ち飲み横丁 (天満駅周辺)",
+    mrt: "JR 오사카역→텐마역 1정거장 / 복귀는 사카이스지선 직통 혼마치",
+    phrase: "おすすめの一杯と、あてを一つください。",
+    phrasePron: "osusume no ippai to, ate o hitotsu kudasai",
+    phraseHint: "추천 술 한 잔이랑 안주 하나 주세요",
+    category: "beer",
+    lat: 34.7042,
+    lng: 135.5106,
     highlights: [
-      "금요일 밤 도톤보리 — 가장 화려한 시간",
-      "크래프트 비어 바 / 강변 테라스 좌석 노리기",
-      "어제 못 간 바 후보 소진하기",
-      "내일 아침 체크아웃 — 짐 미리 80% 싸두기"
+      "금요일 밤 텐마 — 오사카 술꾼들 다 모이는 골목",
+      "다찌노미는 1잔+안주 1개로 짧게 치고 빠지기",
+      "낮에 텐진바시 걸었던 동네의 밤 버전 — 분위기 비교",
+      "내일 체크아웃 — 짐 미리 80% 싸두기"
     ],
-    prompt: "우메다 야경 vs 도톤보리 밤거리 — 어느 밤이 더 좋았는지.",
-    mapsQuery: "Tombori River Walk Dotonbori"
+    prompt: "옆자리 로컬 아저씨들 분위기 한 줄 + 오늘의 잔.",
+    mapsQuery: "Temma standing bar Osaka"
   },
 
   // ───────── Day 3 (7/4 토) ─────────
@@ -513,7 +561,7 @@ export const tripStops: TripStop[] = [
     highlights: [
       "10시 전 체크아웃 — 짐은 프런트에 (보통 무료)",
       "여권·지갑·보조배터리만 데이백에",
-      "면세 쇼핑백은 캐리어 맨 위 (공항 검사 대비)"
+      "오늘은 신세카이 쿠시카츠 → 구로몬 — 아침 가볍게"
     ],
     prompt: "캐리어 무게 어림 + 빠뜨린 것 없는지 서로 크로스체크.",
     mapsQuery: "GRANBELL HOTEL OSAKA"
@@ -571,8 +619,8 @@ export const tripStops: TripStop[] = [
     day: 3,
     date: "7/4 토",
     time: "13:00",
-    title: "구로몬 시장 — 주전부리 + 선물",
-    subtitle: "오사카의 부엌 — 마지막 날 입가심과 기념 쇼핑",
+    title: "구로몬 시장 — 마지막 먹방",
+    subtitle: "오사카의 부엌 — 디저트 배에 남은 자리 채우기",
     nameZh: "黒門市場",
     mrt: "사카이스지선 에비스초→닛폰바시 2정거장, 10번 출구 도보 2분",
     phrase: "これを二つください。",
@@ -584,7 +632,7 @@ export const tripStops: TripStop[] = [
     highlights: [
       "쿠시카츠 점심 직후니 디저트 위주 — 멜론·복숭아 주스, 컷과일",
       "참치·우니 꼬치는 둘이 하나씩만 — 배보다 추억",
-      "상온 선물(과자·조미료)은 여기서 마지막 픽업",
+      "이 여행 마지막 한 입 — 제일 아쉬운 걸로 고르기",
       "14:30 전엔 출발 — 짐 픽업·라피트 역산"
     ],
     prompt: "제일 맛있었던 한 입 + 가격 기록 (정산용).",
@@ -721,6 +769,12 @@ export const stopPlanMeta: Record<string, StopPlanMeta> = {
     alternatives: ["호텔 라운지/바", "편의점 츄하이 + 호텔"],
     flexTip: "2차 개념 — 첫날 무리 금지, 컨디션 보고 한 곳만."
   },
+  "takoyaki-dotonbori": {
+    priority: "must",
+    durationMinutes: 30,
+    alternatives: ["와나카 센니치마에 본점", "아이즈야 난바점 (소스 없는 원조)"],
+    flexTip: "미즈노가 늦게 끝나면 글리코 사진 먼저 찍고 후식으로."
+  },
   "glico-night": {
     priority: "must",
     durationMinutes: 40,
@@ -747,12 +801,18 @@ export const stopPlanMeta: Record<string, StopPlanMeta> = {
     flexTip: "오사카성 더위 피하려면 카페 짧게 끊고 10시 전 출발."
   },
   "osaka-castle": {
-    priority: "must",
-    durationMinutes: 120,
-    alternatives: ["천수각 입장 생략하고 니시노마루 정원만", "고자부네 뱃놀이"],
-    flexTip: "한여름 한낮 — 물·모자 필수. 천수각 줄 30분+면 정원 뷰로 만족.",
+    priority: "backup",
+    durationMinutes: 40,
+    alternatives: ["텐진바시스지 먹방에 시간 몰아주기", "니시노마루 정원 뷰만 30분"],
+    flexTip: "먹방 테마라 후보 — 가더라도 입장 없이 외관 산책만, 폭염이면 패스.",
     riskLevel: "medium",
-    riskNote: "7월 폭염 + 천수각 입장 줄"
+    riskNote: "7월 폭염"
+  },
+  "tenjinbashi-gourmet": {
+    priority: "must",
+    durationMinutes: 90,
+    alternatives: ["오사카성 외관 산책으로 대체", "우메다로 바로 가서 디파치카 일찍"],
+    flexTip: "남쪽 끝(텐진바시 1초메)부터 북쪽으로 — 키지 점심 역산해 배 70%만."
   },
   "kiji-okonomiyaki": {
     priority: "must",
@@ -764,9 +824,9 @@ export const stopPlanMeta: Record<string, StopPlanMeta> = {
   },
   "umeda-shopping": {
     priority: "optional",
-    durationMinutes: 110,
-    alternatives: ["루쿠아/루쿠아 이레", "NU차야마치"],
-    flexTip: "지하 미로에서 길 잃으면 일단 지상으로. 쇼핑 짐은 호텔 말고 코인로커."
+    durationMinutes: 90,
+    alternatives: ["루쿠아 지하 식품관", "리쿠로 오지상 치즈케이크 본점 (난바)"],
+    flexTip: "구경 위주 — 저녁 타키미코지 역산해서 디저트 한두 입만."
   },
   "hep-five": {
     priority: "must",
@@ -793,9 +853,9 @@ export const stopPlanMeta: Record<string, StopPlanMeta> = {
   },
   "bar-d2": {
     priority: "optional",
-    durationMinutes: 60,
-    alternatives: ["호텔 바", "도톤보리 크래프트 비어 바"],
-    flexTip: "내일 체크아웃 — 1잔으로 가볍게, 짐 80% 싸두기."
+    durationMinutes: 50,
+    alternatives: ["도톤보리 강변 한 잔", "호텔 라운지"],
+    flexTip: "공중정원에서 피곤하면 패스 — 1잔+안주 1개로 짧게."
   },
 
   "checkout-d3": {
