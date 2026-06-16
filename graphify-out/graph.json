@@ -4617,7 +4617,7 @@
       "label": "essentials",
       "file_type": "code",
       "source_file": "lib/trip-data.ts",
-      "source_location": "L715",
+      "source_location": "L812",
       "_origin": "ast",
       "id": "lib_trip_data_essentials",
       "community": 2,
@@ -4627,7 +4627,7 @@
       "label": "priorityLabels",
       "file_type": "code",
       "source_file": "lib/trip-data.ts",
-      "source_location": "L725",
+      "source_location": "L824",
       "_origin": "ast",
       "id": "lib_trip_data_prioritylabels",
       "community": 2,
@@ -4637,7 +4637,7 @@
       "label": "getStopPlan()",
       "file_type": "code",
       "source_file": "lib/trip-data.ts",
-      "source_location": "L905",
+      "source_location": "L1042",
       "_origin": "ast",
       "id": "lib_trip_data_getstopplan",
       "community": 2,
@@ -4647,7 +4647,7 @@
       "label": "flexModes",
       "file_type": "code",
       "source_file": "lib/trip-data.ts",
-      "source_location": "L920",
+      "source_location": "L1057",
       "_origin": "ast",
       "id": "lib_trip_data_flexmodes",
       "community": 2,
@@ -17033,5 +17033,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "2eadbc9007eba3d1ce0f2d2fa7f48ae15eecf98f"
+  "built_at_commit": "bdd80eece21573578ebf034beaa25ae427c1a6cc"
 }
