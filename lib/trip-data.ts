@@ -61,7 +61,7 @@ export const tripDays: TripDay[] = [
     title: "도착 미즈노 점심 → 잠깐 근무 → 무한리필 야키니쿠",
     mood: "13시 간사이 도착(캐리어 X) → 미즈노 점심 신고식 → 오후 잠깐 근무 → 19시 무한리필 야키니쿠 + 도톤보리 밤거리",
     summary:
-      "MM736 간사이 T2 도착(13:15) → 라피트로 난바 → 미즈노 오코노미야키+생맥주(도착 점심, 가볍게) → (나) 오시고토카페 신사이바시 근무 / (여친) 신사이바시·아메무라 도보 → 리키마루 무한리필 야키니쿠(19:00 예약) → 양조소 맥주 2차·글리코·타코야키(선택) → 걸어서 혼마치 체크인. 미나미는 전부 호텔서 도보권.",
+      "MM736 간사이 T2 도착(13:15) → 라피트로 난바 → 미즈노 오코노미야키+생맥주(도착 점심, 가볍게) → (나) Brooklyn Roasting 난바 근무 / (여친) 신사이바시·아메무라 도보 → 리키마루 무한리필 야키니쿠(19:00 예약) → 양조소 맥주 2차·글리코·타코야키(선택) → 걸어서 혼마치 체크인. 미나미는 전부 호텔서 도보권.",
     journal: ""
   },
   {
@@ -162,24 +162,24 @@ export const tripStops: TripStop[] = [
     day: 1,
     date: "7/2 목",
     time: "16:30",
-    title: "오후 근무 — 오시고토카페 신사이바시",
-    subtitle: "오전반차 → 점심 후 오후 잠깐 업무 (전석 콘센트·Wi-Fi)",
-    nameZh: "おしごとカフェ心斎橋 (心斎橋)",
-    mrt: "미즈노(도톤보리)서 북쪽으로 도보 8분 / 신사이바시역 도보 1분",
+    title: "오후 근무 — Brooklyn Roasting Company 난바",
+    subtitle: "오전반차 → 점심 후 오후 잠깐 업무 (자가배전 카페, 전원·Wi-Fi)",
+    nameZh: "BROOKLYN ROASTING COMPANY なんばEKIKAN店",
+    mrt: "난카이 난바역 남관 동쪽 출구서 도보 5분 (고가 밑 なんばEKIKAN)",
     phrase: "電源とWi-Fiは使えますか？",
     phrasePron: "dengen to Wi-Fi wa tsukaemasu ka?",
     phraseHint: "콘센트랑 Wi-Fi 쓸 수 있나요?",
     category: "coffee",
-    lat: 34.6735,
-    lng: 135.5012,
+    lat: 34.6588,
+    lng: 135.5007,
     highlights: [
-      "전석 콘센트 + Wi-Fi, 종일 최대 ¥1,000 — 짧은 오후 근무에 가성비 甲",
+      "지도 평점 4.3 — 창가 카운터·롱테이블 전석 콘센트, Wi-Fi, 자가배전 스페셜티 커피",
       "여자친구는 이 시간에 신사이바시스지·아메무라 도보 산책",
-      "화상회의·통화 길면 호텔 객실 책상(USB·콘센트)도 안정적 대안",
-      "대안: Cafe morning box(넓은 책상) / 세루프카페 신사이바시(무인·시간무제한)"
+      "저녁 리키마루 무한리필(난바) 바로 근처 — 근무 끝나고 도보로 합류·디너",
+      "화상회의·통화 길면 호텔 객실 책상(USB·콘센트)도 안정적 대안"
     ],
     prompt: "오늘 처리한 업무 한 줄 + 카페 자리 인증샷.",
-    mapsQuery: "おしごとカフェ心斎橋"
+    mapsQuery: "BROOKLYN ROASTING COMPANY なんばEKIKAN店"
   },
   {
     id: "shinsaibashi-amemura",
@@ -213,7 +213,7 @@ export const tripStops: TripStop[] = [
     title: "리키마루 — 무한리필 야키니쿠 (목 19:00 예약)",
     subtitle: "난카이 난바점 — 도착 첫날 고기 폭식 신고식",
     nameZh: "焼肉 力丸 南海なんば店 (難波千日前12-28 大阪難波ビル4F)",
-    mrt: "신사이바시 카페서 남쪽 도보 12분 / 난바역 3번 출구 도보 2분",
+    mrt: "Brooklyn Roasting 난바점서 도보 5분 / 난바역 3번 출구 도보 2분",
     phrase: "19時に予約した〇〇です。食べ放題でお願いします。",
     phrasePron: "jūku-ji ni yoyaku shita 〇〇 desu. tabehōdai de onegai shimasu",
     phraseHint: "19시에 예약한 ○○입니다. 무한리필로 부탁해요",
@@ -223,7 +223,7 @@ export const tripStops: TripStop[] = [
     highlights: [
       "목 19:00 예약 — 도착(13:15) 후 여유, 비행 지연 버퍼도 OK",
       "무한리필이니 점심 미즈노는 가볍게 → 빈속으로 고기 폭식",
-      "근무(~18:30) 끝나고 신사이바시서 난바로 도보 12분 (여친 합류)",
+      "근무 끝나고 난바 카페서 도보 5분 (여친 합류)",
       "냄새 배는 메뉴 — 다음이 캐주얼 도톤보리 밤거리라 딱 (금 루프탑 X)"
     ],
     prompt: "베스트 부위 1픽 + 둘이 먹은 양 기록 (정산).",
@@ -839,9 +839,9 @@ export const stopPlanMeta: Record<string, StopPlanMeta> = {
   "work-d1": {
     priority: "must",
     durationMinutes: 120,
-    alternatives: ["Cafe morning box (넓은 책상)", "세루프카페 신사이바시 (무인·시간무제한)", "호텔 객실 책상"],
-    flexTip: "오전반차라 오후 2시간 집중 — 통화 길면 객실 책상으로. 여친은 신사이바시 도보.",
-    openingHours: "오시고토카페 — 영업시간 현장 확인",
+    alternatives: ["Streamer Coffee 신사이바시 (소파석)", "오시고토카페 신사이바시 (24시간 무인)", "호텔 객실 책상"],
+    flexTip: "오전반차라 오후 2시간 집중 — 통화 길면 객실 책상으로. 20시 마감이라 오후 근무 풀커버. 여친은 신사이바시 도보.",
+    openingHours: "Brooklyn Roasting 난바 EKIKAN — 평일 9:00–20:00 / 주말·공휴일 8:00–20:00",
     riskLevel: "low"
   },
   "shinsaibashi-amemura": {
